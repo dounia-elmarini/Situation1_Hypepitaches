@@ -1,0 +1,852 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GRHProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="ABSENCE">
+          <Key>
+            <PropertyRef Name="ABSENCE_ID" />
+          </Key>
+          <Property Name="ABSENCE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ABSENCE_DATEDEB" Type="date" Nullable="false" />
+          <Property Name="ABSENCE_DATEFIN" Type="date" Nullable="false" />
+          <Property Name="ABSENCE_DESCRIPTION" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AVOIR">
+          <Key>
+            <PropertyRef Name="ABSENCE_ID" />
+            <PropertyRef Name="EMP_ID" />
+          </Key>
+          <Property Name="ABSENCE_ID" Type="int" Nullable="false" />
+          <Property Name="EMP_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COMPETENCE">
+          <Key>
+            <PropertyRef Name="COMP_ID" />
+          </Key>
+          <Property Name="COMP_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="COMP_NOM" Type="text" />
+          <Property Name="COMP_DETAIL" Type="text" />
+        </EntityType>
+        <EntityType Name="CONTRAT">
+          <Key>
+            <PropertyRef Name="CONTRAT_NUM" />
+          </Key>
+          <Property Name="CONTRAT_NUM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CONTRAT_NOM" Type="text" />
+        </EntityType>
+        <EntityType Name="DIPLOME">
+          <Key>
+            <PropertyRef Name="DIPLOME_ID" />
+          </Key>
+          <Property Name="DIPLOME_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DIPLOME_NOM" Type="text" />
+        </EntityType>
+        <EntityType Name="DISPOSE">
+          <Key>
+            <PropertyRef Name="EMP_ID" />
+            <PropertyRef Name="COMP_ID" />
+          </Key>
+          <Property Name="EMP_ID" Type="int" Nullable="false" />
+          <Property Name="COMP_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EMPLOYE">
+          <Key>
+            <PropertyRef Name="EMP_ID" />
+          </Key>
+          <Property Name="EMP_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EMP_NOM" Type="text" Nullable="false" />
+          <Property Name="EMP_PRENOM" Type="text" Nullable="false" />
+          <Property Name="EMP_ADRESSE" Type="text" Nullable="false" />
+          <Property Name="EMP_CP" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="EMP_VILLE" Type="text" Nullable="false" />
+          <Property Name="EMP_TEL" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="EMP_MAIL" Type="text" />
+          <Property Name="EMP_SEXE" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="EST_GERE_PAR">
+          <Key>
+            <PropertyRef Name="EMP_ID" />
+            <PropertyRef Name="SERVICE_ID" />
+          </Key>
+          <Property Name="EMP_ID" Type="int" Nullable="false" />
+          <Property Name="SERVICE_ID" Type="int" Nullable="false" />
+          <Property Name="DATE_DEBUTG" Type="date" />
+          <Property Name="DATE_FING" Type="date" />
+        </EntityType>
+        <EntityType Name="HISTORIQUE">
+          <Key>
+            <PropertyRef Name="HISTORIQUE_ID" />
+          </Key>
+          <Property Name="HISTORIQUE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HISTORIQUE_LIBELLE" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="HISTORIQUE_DATE" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="METIER">
+          <Key>
+            <PropertyRef Name="METIER_ID" />
+          </Key>
+          <Property Name="METIER_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="METIER_NOM" Type="text" />
+          <Property Name="METIER_DETAILS" Type="text" />
+        </EntityType>
+        <EntityType Name="POSSEDE">
+          <Key>
+            <PropertyRef Name="EMP_ID" />
+            <PropertyRef Name="DIPLOME_ID" />
+          </Key>
+          <Property Name="EMP_ID" Type="int" Nullable="false" />
+          <Property Name="DIPLOME_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SERVICE">
+          <Key>
+            <PropertyRef Name="SERVICE_ID" />
+          </Key>
+          <Property Name="SERVICE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SERVICE_DESIGNATION" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="SERVICE_TYPE" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SERVICE_CAPACITE" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SIGNE">
+          <Key>
+            <PropertyRef Name="CONTRAT_NUM" />
+            <PropertyRef Name="EMP_ID" />
+            <PropertyRef Name="METIER_ID" />
+          </Key>
+          <Property Name="CONTRAT_NUM" Type="int" Nullable="false" />
+          <Property Name="EMP_ID" Type="int" Nullable="false" />
+          <Property Name="METIER_ID" Type="int" Nullable="false" />
+          <Property Name="SALAIRE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DATE_DEBUTS" Type="date" Nullable="false" />
+          <Property Name="DATE_FINS" Type="date" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TRAVAILLE">
+          <Key>
+            <PropertyRef Name="EMP_ID" />
+            <PropertyRef Name="SERVICE_ID" />
+          </Key>
+          <Property Name="EMP_ID" Type="int" Nullable="false" />
+          <Property Name="SERVICE_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AVOIR_ABSENCE">
+          <End Role="ABSENCE" Type="Self.ABSENCE" Multiplicity="1" />
+          <End Role="AVOIR" Type="Self.AVOIR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ABSENCE">
+              <PropertyRef Name="ABSENCE_ID" />
+            </Principal>
+            <Dependent Role="AVOIR">
+              <PropertyRef Name="ABSENCE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AVOIR_EMPLOYE">
+          <End Role="EMPLOYE" Type="Self.EMPLOYE" Multiplicity="1" />
+          <End Role="AVOIR" Type="Self.AVOIR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYE">
+              <PropertyRef Name="EMP_ID" />
+            </Principal>
+            <Dependent Role="AVOIR">
+              <PropertyRef Name="EMP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DISPOSE_COMPETENCE">
+          <End Role="COMPETENCE" Type="Self.COMPETENCE" Multiplicity="1" />
+          <End Role="DISPOSE" Type="Self.DISPOSE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPETENCE">
+              <PropertyRef Name="COMP_ID" />
+            </Principal>
+            <Dependent Role="DISPOSE">
+              <PropertyRef Name="COMP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DISPOSE_EMPLOYE">
+          <End Role="EMPLOYE" Type="Self.EMPLOYE" Multiplicity="1" />
+          <End Role="DISPOSE" Type="Self.DISPOSE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYE">
+              <PropertyRef Name="EMP_ID" />
+            </Principal>
+            <Dependent Role="DISPOSE">
+              <PropertyRef Name="EMP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EST_GERE_PAR_EMPLOYE">
+          <End Role="EMPLOYE" Type="Self.EMPLOYE" Multiplicity="1" />
+          <End Role="EST_GERE_PAR" Type="Self.EST_GERE_PAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYE">
+              <PropertyRef Name="EMP_ID" />
+            </Principal>
+            <Dependent Role="EST_GERE_PAR">
+              <PropertyRef Name="EMP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EST_GERE_PAR_SERVICE">
+          <End Role="SERVICE" Type="Self.SERVICE" Multiplicity="1" />
+          <End Role="EST_GERE_PAR" Type="Self.EST_GERE_PAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICE">
+              <PropertyRef Name="SERVICE_ID" />
+            </Principal>
+            <Dependent Role="EST_GERE_PAR">
+              <PropertyRef Name="SERVICE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POSSEDE_DIPLOME">
+          <End Role="DIPLOME" Type="Self.DIPLOME" Multiplicity="1" />
+          <End Role="POSSEDE" Type="Self.POSSEDE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DIPLOME">
+              <PropertyRef Name="DIPLOME_ID" />
+            </Principal>
+            <Dependent Role="POSSEDE">
+              <PropertyRef Name="DIPLOME_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POSSEDE_EMPLOYE">
+          <End Role="EMPLOYE" Type="Self.EMPLOYE" Multiplicity="1" />
+          <End Role="POSSEDE" Type="Self.POSSEDE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYE">
+              <PropertyRef Name="EMP_ID" />
+            </Principal>
+            <Dependent Role="POSSEDE">
+              <PropertyRef Name="EMP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SIGNE_CONTRAT">
+          <End Role="CONTRAT" Type="Self.CONTRAT" Multiplicity="1" />
+          <End Role="SIGNE" Type="Self.SIGNE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONTRAT">
+              <PropertyRef Name="CONTRAT_NUM" />
+            </Principal>
+            <Dependent Role="SIGNE">
+              <PropertyRef Name="CONTRAT_NUM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SIGNE_EMPLOYE">
+          <End Role="EMPLOYE" Type="Self.EMPLOYE" Multiplicity="1" />
+          <End Role="SIGNE" Type="Self.SIGNE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYE">
+              <PropertyRef Name="EMP_ID" />
+            </Principal>
+            <Dependent Role="SIGNE">
+              <PropertyRef Name="EMP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SIGNE_METIER">
+          <End Role="METIER" Type="Self.METIER" Multiplicity="1" />
+          <End Role="SIGNE" Type="Self.SIGNE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="METIER">
+              <PropertyRef Name="METIER_ID" />
+            </Principal>
+            <Dependent Role="SIGNE">
+              <PropertyRef Name="METIER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRAVAILLE_EMPLOYE">
+          <End Role="EMPLOYE" Type="Self.EMPLOYE" Multiplicity="1" />
+          <End Role="TRAVAILLE" Type="Self.TRAVAILLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYE">
+              <PropertyRef Name="EMP_ID" />
+            </Principal>
+            <Dependent Role="TRAVAILLE">
+              <PropertyRef Name="EMP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRAVAILLE_SERVICE">
+          <End Role="SERVICE" Type="Self.SERVICE" Multiplicity="1" />
+          <End Role="TRAVAILLE" Type="Self.TRAVAILLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICE">
+              <PropertyRef Name="SERVICE_ID" />
+            </Principal>
+            <Dependent Role="TRAVAILLE">
+              <PropertyRef Name="SERVICE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GRHProjectModelStoreContainer">
+          <EntitySet Name="ABSENCE" EntityType="Self.ABSENCE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AVOIR" EntityType="Self.AVOIR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COMPETENCE" EntityType="Self.COMPETENCE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CONTRAT" EntityType="Self.CONTRAT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DIPLOME" EntityType="Self.DIPLOME" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DISPOSE" EntityType="Self.DISPOSE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EMPLOYE" EntityType="Self.EMPLOYE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EST_GERE_PAR" EntityType="Self.EST_GERE_PAR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HISTORIQUE" EntityType="Self.HISTORIQUE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="METIER" EntityType="Self.METIER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POSSEDE" EntityType="Self.POSSEDE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SERVICE" EntityType="Self.SERVICE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SIGNE" EntityType="Self.SIGNE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TRAVAILLE" EntityType="Self.TRAVAILLE" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AVOIR_ABSENCE" Association="Self.FK_AVOIR_ABSENCE">
+            <End Role="ABSENCE" EntitySet="ABSENCE" />
+            <End Role="AVOIR" EntitySet="AVOIR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AVOIR_EMPLOYE" Association="Self.FK_AVOIR_EMPLOYE">
+            <End Role="EMPLOYE" EntitySet="EMPLOYE" />
+            <End Role="AVOIR" EntitySet="AVOIR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DISPOSE_COMPETENCE" Association="Self.FK_DISPOSE_COMPETENCE">
+            <End Role="COMPETENCE" EntitySet="COMPETENCE" />
+            <End Role="DISPOSE" EntitySet="DISPOSE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DISPOSE_EMPLOYE" Association="Self.FK_DISPOSE_EMPLOYE">
+            <End Role="EMPLOYE" EntitySet="EMPLOYE" />
+            <End Role="DISPOSE" EntitySet="DISPOSE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EST_GERE_PAR_EMPLOYE" Association="Self.FK_EST_GERE_PAR_EMPLOYE">
+            <End Role="EMPLOYE" EntitySet="EMPLOYE" />
+            <End Role="EST_GERE_PAR" EntitySet="EST_GERE_PAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EST_GERE_PAR_SERVICE" Association="Self.FK_EST_GERE_PAR_SERVICE">
+            <End Role="SERVICE" EntitySet="SERVICE" />
+            <End Role="EST_GERE_PAR" EntitySet="EST_GERE_PAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POSSEDE_DIPLOME" Association="Self.FK_POSSEDE_DIPLOME">
+            <End Role="DIPLOME" EntitySet="DIPLOME" />
+            <End Role="POSSEDE" EntitySet="POSSEDE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POSSEDE_EMPLOYE" Association="Self.FK_POSSEDE_EMPLOYE">
+            <End Role="EMPLOYE" EntitySet="EMPLOYE" />
+            <End Role="POSSEDE" EntitySet="POSSEDE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SIGNE_CONTRAT" Association="Self.FK_SIGNE_CONTRAT">
+            <End Role="CONTRAT" EntitySet="CONTRAT" />
+            <End Role="SIGNE" EntitySet="SIGNE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SIGNE_EMPLOYE" Association="Self.FK_SIGNE_EMPLOYE">
+            <End Role="EMPLOYE" EntitySet="EMPLOYE" />
+            <End Role="SIGNE" EntitySet="SIGNE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SIGNE_METIER" Association="Self.FK_SIGNE_METIER">
+            <End Role="METIER" EntitySet="METIER" />
+            <End Role="SIGNE" EntitySet="SIGNE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRAVAILLE_EMPLOYE" Association="Self.FK_TRAVAILLE_EMPLOYE">
+            <End Role="EMPLOYE" EntitySet="EMPLOYE" />
+            <End Role="TRAVAILLE" EntitySet="TRAVAILLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRAVAILLE_SERVICE" Association="Self.FK_TRAVAILLE_SERVICE">
+            <End Role="SERVICE" EntitySet="SERVICE" />
+            <End Role="TRAVAILLE" EntitySet="TRAVAILLE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GRHProjectModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="GRHProjectEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ABSENCE" EntityType="GRHProjectModel.ABSENCE" />
+          <EntitySet Name="COMPETENCE" EntityType="GRHProjectModel.COMPETENCE" />
+          <EntitySet Name="CONTRAT" EntityType="GRHProjectModel.CONTRAT" />
+          <EntitySet Name="DIPLOME" EntityType="GRHProjectModel.DIPLOME" />
+          <EntitySet Name="EMPLOYE" EntityType="GRHProjectModel.EMPLOYE" />
+          <EntitySet Name="EST_GERE_PAR" EntityType="GRHProjectModel.EST_GERE_PAR" />
+          <EntitySet Name="HISTORIQUE" EntityType="GRHProjectModel.HISTORIQUE" />
+          <EntitySet Name="METIER" EntityType="GRHProjectModel.METIER" />
+          <EntitySet Name="SERVICE" EntityType="GRHProjectModel.SERVICE" />
+          <EntitySet Name="SIGNE" EntityType="GRHProjectModel.SIGNE" />
+          <EntitySet Name="sysdiagrams" EntityType="GRHProjectModel.sysdiagrams" />
+          <EntitySet Name="TRAVAILLE" EntityType="GRHProjectModel.TRAVAILLE" />
+          <AssociationSet Name="FK_SIGNE_CONTRAT" Association="GRHProjectModel.FK_SIGNE_CONTRAT">
+            <End Role="CONTRAT" EntitySet="CONTRAT" />
+            <End Role="SIGNE" EntitySet="SIGNE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EST_GERE_PAR_EMPLOYE" Association="GRHProjectModel.FK_EST_GERE_PAR_EMPLOYE">
+            <End Role="EMPLOYE" EntitySet="EMPLOYE" />
+            <End Role="EST_GERE_PAR" EntitySet="EST_GERE_PAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SIGNE_EMPLOYE" Association="GRHProjectModel.FK_SIGNE_EMPLOYE">
+            <End Role="EMPLOYE" EntitySet="EMPLOYE" />
+            <End Role="SIGNE" EntitySet="SIGNE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRAVAILLE_EMPLOYE" Association="GRHProjectModel.FK_TRAVAILLE_EMPLOYE">
+            <End Role="EMPLOYE" EntitySet="EMPLOYE" />
+            <End Role="TRAVAILLE" EntitySet="TRAVAILLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EST_GERE_PAR_SERVICE" Association="GRHProjectModel.FK_EST_GERE_PAR_SERVICE">
+            <End Role="SERVICE" EntitySet="SERVICE" />
+            <End Role="EST_GERE_PAR" EntitySet="EST_GERE_PAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SIGNE_METIER" Association="GRHProjectModel.FK_SIGNE_METIER">
+            <End Role="METIER" EntitySet="METIER" />
+            <End Role="SIGNE" EntitySet="SIGNE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRAVAILLE_SERVICE" Association="GRHProjectModel.FK_TRAVAILLE_SERVICE">
+            <End Role="SERVICE" EntitySet="SERVICE" />
+            <End Role="TRAVAILLE" EntitySet="TRAVAILLE" />
+          </AssociationSet>
+          <AssociationSet Name="AVOIR" Association="GRHProjectModel.AVOIR">
+            <End Role="ABSENCE" EntitySet="ABSENCE" />
+            <End Role="EMPLOYE" EntitySet="EMPLOYE" />
+          </AssociationSet>
+          <AssociationSet Name="DISPOSE" Association="GRHProjectModel.DISPOSE">
+            <End Role="COMPETENCE" EntitySet="COMPETENCE" />
+            <End Role="EMPLOYE" EntitySet="EMPLOYE" />
+          </AssociationSet>
+          <AssociationSet Name="POSSEDE" Association="GRHProjectModel.POSSEDE">
+            <End Role="DIPLOME" EntitySet="DIPLOME" />
+            <End Role="EMPLOYE" EntitySet="EMPLOYE" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ABSENCE">
+          <Key>
+            <PropertyRef Name="ABSENCE_ID" />
+          </Key>
+          <Property Name="ABSENCE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ABSENCE_DATEDEB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ABSENCE_DATEFIN" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ABSENCE_DESCRIPTION" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="LesEmployes" Relationship="GRHProjectModel.AVOIR" FromRole="ABSENCE" ToRole="EMPLOYE" />
+        </EntityType>
+        <EntityType Name="COMPETENCE">
+          <Key>
+            <PropertyRef Name="COMP_ID" />
+          </Key>
+          <Property Name="COMP_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COMP_NOM" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="COMP_DETAIL" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="LesEmployes" Relationship="GRHProjectModel.DISPOSE" FromRole="COMPETENCE" ToRole="EMPLOYE" />
+        </EntityType>
+        <EntityType Name="CONTRAT">
+          <Key>
+            <PropertyRef Name="CONTRAT_NUM" />
+          </Key>
+          <Property Name="CONTRAT_NUM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CONTRAT_NOM" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="SIGNE" Relationship="GRHProjectModel.FK_SIGNE_CONTRAT" FromRole="CONTRAT" ToRole="SIGNE" />
+        </EntityType>
+        <EntityType Name="DIPLOME">
+          <Key>
+            <PropertyRef Name="DIPLOME_ID" />
+          </Key>
+          <Property Name="DIPLOME_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DIPLOME_NOM" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="LesEmployes" Relationship="GRHProjectModel.POSSEDE" FromRole="DIPLOME" ToRole="EMPLOYE" />
+        </EntityType>
+        <EntityType Name="EMPLOYE">
+          <Key>
+            <PropertyRef Name="EMP_ID" />
+          </Key>
+          <Property Name="EMP_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EMP_NOM" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="EMP_PRENOM" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="EMP_ADRESSE" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="EMP_CP" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="EMP_VILLE" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="EMP_TEL" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="EMP_MAIL" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="EST_GERE_PAR" Relationship="GRHProjectModel.FK_EST_GERE_PAR_EMPLOYE" FromRole="EMPLOYE" ToRole="EST_GERE_PAR" />
+          <NavigationProperty Name="SIGNE" Relationship="GRHProjectModel.FK_SIGNE_EMPLOYE" FromRole="EMPLOYE" ToRole="SIGNE" />
+          <NavigationProperty Name="TRAVAILLE" Relationship="GRHProjectModel.FK_TRAVAILLE_EMPLOYE" FromRole="EMPLOYE" ToRole="TRAVAILLE" />
+          <NavigationProperty Name="LesAbsences" Relationship="GRHProjectModel.AVOIR" FromRole="EMPLOYE" ToRole="ABSENCE" />
+          <NavigationProperty Name="LesCompetences" Relationship="GRHProjectModel.DISPOSE" FromRole="EMPLOYE" ToRole="COMPETENCE" />
+          <NavigationProperty Name="LesDiplomes" Relationship="GRHProjectModel.POSSEDE" FromRole="EMPLOYE" ToRole="DIPLOME" />
+          <Property Name="EMP_SEXE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="EST_GERE_PAR">
+          <Key>
+            <PropertyRef Name="EMP_ID" />
+            <PropertyRef Name="SERVICE_ID" />
+          </Key>
+          <Property Name="EMP_ID" Type="Int32" Nullable="false" />
+          <Property Name="SERVICE_ID" Type="Int32" Nullable="false" />
+          <Property Name="DATE_DEBUTG" Type="DateTime" Precision="0" />
+          <Property Name="DATE_FING" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="LesEmployes" Relationship="GRHProjectModel.FK_EST_GERE_PAR_EMPLOYE" FromRole="EST_GERE_PAR" ToRole="EMPLOYE" />
+          <NavigationProperty Name="LeService" Relationship="GRHProjectModel.FK_EST_GERE_PAR_SERVICE" FromRole="EST_GERE_PAR" ToRole="SERVICE" />
+        </EntityType>
+        <EntityType Name="HISTORIQUE">
+          <Key>
+            <PropertyRef Name="HISTORIQUE_ID" />
+          </Key>
+          <Property Name="HISTORIQUE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HISTORIQUE_LIBELLE" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="HISTORIQUE_DATE" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="METIER">
+          <Key>
+            <PropertyRef Name="METIER_ID" />
+          </Key>
+          <Property Name="METIER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="METIER_NOM" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="METIER_DETAILS" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="SIGNE" Relationship="GRHProjectModel.FK_SIGNE_METIER" FromRole="METIER" ToRole="SIGNE" />
+        </EntityType>
+        <EntityType Name="SERVICE">
+          <Key>
+            <PropertyRef Name="SERVICE_ID" />
+          </Key>
+          <Property Name="SERVICE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SERVICE_DESIGNATION" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="SERVICE_TYPE" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="SERVICE_CAPACITE" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EST_GERE_PAR" Relationship="GRHProjectModel.FK_EST_GERE_PAR_SERVICE" FromRole="SERVICE" ToRole="EST_GERE_PAR" />
+          <NavigationProperty Name="TRAVAILLE" Relationship="GRHProjectModel.FK_TRAVAILLE_SERVICE" FromRole="SERVICE" ToRole="TRAVAILLE" />
+        </EntityType>
+        <EntityType Name="SIGNE">
+          <Key>
+            <PropertyRef Name="CONTRAT_NUM" />
+            <PropertyRef Name="EMP_ID" />
+            <PropertyRef Name="METIER_ID" />
+          </Key>
+          <Property Name="CONTRAT_NUM" Type="Int32" Nullable="false" />
+          <Property Name="EMP_ID" Type="Int32" Nullable="false" />
+          <Property Name="METIER_ID" Type="Int32" Nullable="false" />
+          <Property Name="SALAIRE" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="DATE_DEBUTS" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DATE_FINS" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="LesContrats" Relationship="GRHProjectModel.FK_SIGNE_CONTRAT" FromRole="SIGNE" ToRole="CONTRAT" />
+          <NavigationProperty Name="LesEmployes" Relationship="GRHProjectModel.FK_SIGNE_EMPLOYE" FromRole="SIGNE" ToRole="EMPLOYE" />
+          <NavigationProperty Name="LesMetiers" Relationship="GRHProjectModel.FK_SIGNE_METIER" FromRole="SIGNE" ToRole="METIER" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TRAVAILLE">
+          <Key>
+            <PropertyRef Name="EMP_ID" />
+            <PropertyRef Name="SERVICE_ID" />
+          </Key>
+          <Property Name="EMP_ID" Type="Int32" Nullable="false" />
+          <Property Name="SERVICE_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="LesEmployes" Relationship="GRHProjectModel.FK_TRAVAILLE_EMPLOYE" FromRole="TRAVAILLE" ToRole="EMPLOYE" />
+          <NavigationProperty Name="LeService" Relationship="GRHProjectModel.FK_TRAVAILLE_SERVICE" FromRole="TRAVAILLE" ToRole="SERVICE" />
+        </EntityType>
+        <Association Name="FK_SIGNE_CONTRAT">
+          <End Role="CONTRAT" Type="GRHProjectModel.CONTRAT" Multiplicity="1" />
+          <End Role="SIGNE" Type="GRHProjectModel.SIGNE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONTRAT">
+              <PropertyRef Name="CONTRAT_NUM" />
+            </Principal>
+            <Dependent Role="SIGNE">
+              <PropertyRef Name="CONTRAT_NUM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EST_GERE_PAR_EMPLOYE">
+          <End Role="EMPLOYE" Type="GRHProjectModel.EMPLOYE" Multiplicity="1" />
+          <End Role="EST_GERE_PAR" Type="GRHProjectModel.EST_GERE_PAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYE">
+              <PropertyRef Name="EMP_ID" />
+            </Principal>
+            <Dependent Role="EST_GERE_PAR">
+              <PropertyRef Name="EMP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SIGNE_EMPLOYE">
+          <End Role="EMPLOYE" Type="GRHProjectModel.EMPLOYE" Multiplicity="1" />
+          <End Role="SIGNE" Type="GRHProjectModel.SIGNE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYE">
+              <PropertyRef Name="EMP_ID" />
+            </Principal>
+            <Dependent Role="SIGNE">
+              <PropertyRef Name="EMP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRAVAILLE_EMPLOYE">
+          <End Role="EMPLOYE" Type="GRHProjectModel.EMPLOYE" Multiplicity="1" />
+          <End Role="TRAVAILLE" Type="GRHProjectModel.TRAVAILLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYE">
+              <PropertyRef Name="EMP_ID" />
+            </Principal>
+            <Dependent Role="TRAVAILLE">
+              <PropertyRef Name="EMP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EST_GERE_PAR_SERVICE">
+          <End Role="SERVICE" Type="GRHProjectModel.SERVICE" Multiplicity="1" />
+          <End Role="EST_GERE_PAR" Type="GRHProjectModel.EST_GERE_PAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICE">
+              <PropertyRef Name="SERVICE_ID" />
+            </Principal>
+            <Dependent Role="EST_GERE_PAR">
+              <PropertyRef Name="SERVICE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SIGNE_METIER">
+          <End Role="METIER" Type="GRHProjectModel.METIER" Multiplicity="1" />
+          <End Role="SIGNE" Type="GRHProjectModel.SIGNE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="METIER">
+              <PropertyRef Name="METIER_ID" />
+            </Principal>
+            <Dependent Role="SIGNE">
+              <PropertyRef Name="METIER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRAVAILLE_SERVICE">
+          <End Role="SERVICE" Type="GRHProjectModel.SERVICE" Multiplicity="1" />
+          <End Role="TRAVAILLE" Type="GRHProjectModel.TRAVAILLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICE">
+              <PropertyRef Name="SERVICE_ID" />
+            </Principal>
+            <Dependent Role="TRAVAILLE">
+              <PropertyRef Name="SERVICE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AVOIR">
+          <End Role="ABSENCE" Type="GRHProjectModel.ABSENCE" Multiplicity="*" />
+          <End Role="EMPLOYE" Type="GRHProjectModel.EMPLOYE" Multiplicity="*" />
+        </Association>
+        <Association Name="DISPOSE">
+          <End Role="COMPETENCE" Type="GRHProjectModel.COMPETENCE" Multiplicity="*" />
+          <End Role="EMPLOYE" Type="GRHProjectModel.EMPLOYE" Multiplicity="*" />
+        </Association>
+        <Association Name="POSSEDE">
+          <End Role="DIPLOME" Type="GRHProjectModel.DIPLOME" Multiplicity="*" />
+          <End Role="EMPLOYE" Type="GRHProjectModel.EMPLOYE" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GRHProjectModelStoreContainer" CdmEntityContainer="GRHProjectEntities1">
+          <EntitySetMapping Name="ABSENCE"><EntityTypeMapping TypeName="GRHProjectModel.ABSENCE"><MappingFragment StoreEntitySet="ABSENCE">
+            <ScalarProperty Name="ABSENCE_ID" ColumnName="ABSENCE_ID" />
+            <ScalarProperty Name="ABSENCE_DATEDEB" ColumnName="ABSENCE_DATEDEB" />
+            <ScalarProperty Name="ABSENCE_DATEFIN" ColumnName="ABSENCE_DATEFIN" />
+            <ScalarProperty Name="ABSENCE_DESCRIPTION" ColumnName="ABSENCE_DESCRIPTION" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="COMPETENCE"><EntityTypeMapping TypeName="GRHProjectModel.COMPETENCE"><MappingFragment StoreEntitySet="COMPETENCE">
+            <ScalarProperty Name="COMP_ID" ColumnName="COMP_ID" />
+            <ScalarProperty Name="COMP_NOM" ColumnName="COMP_NOM" />
+            <ScalarProperty Name="COMP_DETAIL" ColumnName="COMP_DETAIL" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CONTRAT"><EntityTypeMapping TypeName="GRHProjectModel.CONTRAT"><MappingFragment StoreEntitySet="CONTRAT">
+            <ScalarProperty Name="CONTRAT_NUM" ColumnName="CONTRAT_NUM" />
+            <ScalarProperty Name="CONTRAT_NOM" ColumnName="CONTRAT_NOM" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="DIPLOME"><EntityTypeMapping TypeName="GRHProjectModel.DIPLOME"><MappingFragment StoreEntitySet="DIPLOME">
+            <ScalarProperty Name="DIPLOME_ID" ColumnName="DIPLOME_ID" />
+            <ScalarProperty Name="DIPLOME_NOM" ColumnName="DIPLOME_NOM" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="EMPLOYE"><EntityTypeMapping TypeName="GRHProjectModel.EMPLOYE"><MappingFragment StoreEntitySet="EMPLOYE">
+            <ScalarProperty Name="EMP_SEXE" ColumnName="EMP_SEXE" />
+                <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+            <ScalarProperty Name="EMP_NOM" ColumnName="EMP_NOM" />
+            <ScalarProperty Name="EMP_PRENOM" ColumnName="EMP_PRENOM" />
+            <ScalarProperty Name="EMP_ADRESSE" ColumnName="EMP_ADRESSE" />
+            <ScalarProperty Name="EMP_CP" ColumnName="EMP_CP" />
+            <ScalarProperty Name="EMP_VILLE" ColumnName="EMP_VILLE" />
+            <ScalarProperty Name="EMP_TEL" ColumnName="EMP_TEL" />
+            <ScalarProperty Name="EMP_MAIL" ColumnName="EMP_MAIL" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="EST_GERE_PAR"><EntityTypeMapping TypeName="GRHProjectModel.EST_GERE_PAR"><MappingFragment StoreEntitySet="EST_GERE_PAR">
+            <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+            <ScalarProperty Name="SERVICE_ID" ColumnName="SERVICE_ID" />
+            <ScalarProperty Name="DATE_DEBUTG" ColumnName="DATE_DEBUTG" />
+            <ScalarProperty Name="DATE_FING" ColumnName="DATE_FING" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="HISTORIQUE"><EntityTypeMapping TypeName="GRHProjectModel.HISTORIQUE"><MappingFragment StoreEntitySet="HISTORIQUE">
+            <ScalarProperty Name="HISTORIQUE_ID" ColumnName="HISTORIQUE_ID" />
+            <ScalarProperty Name="HISTORIQUE_LIBELLE" ColumnName="HISTORIQUE_LIBELLE" />
+            <ScalarProperty Name="HISTORIQUE_DATE" ColumnName="HISTORIQUE_DATE" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="METIER"><EntityTypeMapping TypeName="GRHProjectModel.METIER"><MappingFragment StoreEntitySet="METIER">
+            <ScalarProperty Name="METIER_ID" ColumnName="METIER_ID" />
+            <ScalarProperty Name="METIER_NOM" ColumnName="METIER_NOM" />
+            <ScalarProperty Name="METIER_DETAILS" ColumnName="METIER_DETAILS" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="SERVICE"><EntityTypeMapping TypeName="GRHProjectModel.SERVICE"><MappingFragment StoreEntitySet="SERVICE">
+            <ScalarProperty Name="SERVICE_ID" ColumnName="SERVICE_ID" />
+            <ScalarProperty Name="SERVICE_DESIGNATION" ColumnName="SERVICE_DESIGNATION" />
+            <ScalarProperty Name="SERVICE_TYPE" ColumnName="SERVICE_TYPE" />
+            <ScalarProperty Name="SERVICE_CAPACITE" ColumnName="SERVICE_CAPACITE" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="SIGNE"><EntityTypeMapping TypeName="GRHProjectModel.SIGNE"><MappingFragment StoreEntitySet="SIGNE">
+            <ScalarProperty Name="CONTRAT_NUM" ColumnName="CONTRAT_NUM" />
+            <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+            <ScalarProperty Name="METIER_ID" ColumnName="METIER_ID" />
+            <ScalarProperty Name="SALAIRE" ColumnName="SALAIRE" />
+            <ScalarProperty Name="DATE_DEBUTS" ColumnName="DATE_DEBUTS" />
+            <ScalarProperty Name="DATE_FINS" ColumnName="DATE_FINS" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams"><EntityTypeMapping TypeName="GRHProjectModel.sysdiagrams"><MappingFragment StoreEntitySet="sysdiagrams">
+            <ScalarProperty Name="name" ColumnName="name" />
+            <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+            <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+            <ScalarProperty Name="version" ColumnName="version" />
+            <ScalarProperty Name="definition" ColumnName="definition" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TRAVAILLE"><EntityTypeMapping TypeName="GRHProjectModel.TRAVAILLE"><MappingFragment StoreEntitySet="TRAVAILLE">
+            <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+            <ScalarProperty Name="SERVICE_ID" ColumnName="SERVICE_ID" />
+            </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <AssociationSetMapping Name="AVOIR" TypeName="GRHProjectModel.AVOIR" StoreEntitySet="AVOIR">
+            <EndProperty Name="ABSENCE">
+              <ScalarProperty Name="ABSENCE_ID" ColumnName="ABSENCE_ID" />
+            </EndProperty>
+            <EndProperty Name="EMPLOYE">
+              <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="DISPOSE" TypeName="GRHProjectModel.DISPOSE" StoreEntitySet="DISPOSE">
+            <EndProperty Name="COMPETENCE">
+              <ScalarProperty Name="COMP_ID" ColumnName="COMP_ID" />
+            </EndProperty>
+            <EndProperty Name="EMPLOYE">
+              <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="POSSEDE" TypeName="GRHProjectModel.POSSEDE" StoreEntitySet="POSSEDE">
+            <EndProperty Name="DIPLOME">
+              <ScalarProperty Name="DIPLOME_ID" ColumnName="DIPLOME_ID" />
+            </EndProperty>
+            <EndProperty Name="EMPLOYE">
+              <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="GRH" ZoomLevel="66">
+        <EntityTypeShape EntityType="GRHProjectModel.ABSENCE" Width="1.5" PointX="0.75" PointY="4.25" Height="1.7566536458333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="GRHProjectModel.COMPETENCE" Width="1.5" PointX="0.75" PointY="1.25" Height="1.5923063151041674" IsExpanded="true" />
+        <EntityTypeShape EntityType="GRHProjectModel.CONTRAT" Width="1.5" PointX="3" PointY="1.25" Height="1.4279589843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="GRHProjectModel.DIPLOME" Width="1.5" PointX="0.75" PointY="7.5" Height="1.4279589843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="GRHProjectModel.EMPLOYE" Width="1.5" PointX="3" PointY="3.5" Height="3.2357796223958317" IsExpanded="true" />
+        <EntityTypeShape EntityType="GRHProjectModel.EST_GERE_PAR" Width="1.5" PointX="5.25" PointY="4.125" Height="1.9210009765624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="GRHProjectModel.HISTORIQUE" Width="1.5" PointX="7.75" PointY="0.75" Height="1.4279589843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="GRHProjectModel.METIER" Width="1.5" PointX="3" PointY="8.5" Height="1.5923063151041674" IsExpanded="true" />
+        <EntityTypeShape EntityType="GRHProjectModel.SERVICE" Width="1.5" PointX="3" PointY="11.125" Height="1.9210009765624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="GRHProjectModel.SIGNE" Width="1.5" PointX="5.25" PointY="0.875" Height="2.4140429687499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="GRHProjectModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="3.75" Height="1.7566536458333353" IsExpanded="true" />
+        <EntityTypeShape EntityType="GRHProjectModel.TRAVAILLE" Width="1.5" PointX="5.25" PointY="7.125" Height="1.9210009765625031" IsExpanded="true" />
+        <AssociationConnector Association="GRHProjectModel.FK_SIGNE_CONTRAT" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="1.9639794921874998" />
+          <ConnectorPoint PointX="5.25" PointY="1.9639794921874998" />
+        </AssociationConnector>
+        <AssociationConnector Association="GRHProjectModel.FK_EST_GERE_PAR_EMPLOYE" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="5.08550048828125" />
+          <ConnectorPoint PointX="4.854166666666667" PointY="5.0855004882812489" />
+          <ConnectorPoint PointX="5.020833333333333" PointY="5.08550048828125" />
+          <ConnectorPoint PointX="5.25" PointY="5.08550048828125" />
+        </AssociationConnector>
+        <AssociationConnector Association="GRHProjectModel.FK_SIGNE_EMPLOYE" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="3.5" />
+          <ConnectorPoint PointX="4.875" PointY="3.125" />
+          <ConnectorPoint PointX="4.875" PointY="3.6640429687499996" />
+          <ConnectorPoint PointX="4.8785744349011209" PointY="3.6604685338488783" />
+          <ConnectorPoint PointX="4.9964255650988791" PointY="3.5426174036511204" />
+          <ConnectorPoint PointX="5.25" PointY="3.2890429687499996" />
+        </AssociationConnector>
+        <AssociationConnector Association="GRHProjectModel.FK_TRAVAILLE_EMPLOYE" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="6.7357796223958317" />
+          <ConnectorPoint PointX="4.875" PointY="7.1107796223958317" />
+          <ConnectorPoint PointX="4.875" PointY="6.75" />
+          <ConnectorPoint PointX="4.8785744349011217" PointY="6.7535744349011209" />
+          <ConnectorPoint PointX="4.9964255650988791" PointY="6.8714255650988791" />
+          <ConnectorPoint PointX="5.0035744349011217" PointY="6.8785744349011209" />
+          <ConnectorPoint PointX="5.1214255650988791" PointY="6.9964255650988791" />
+          <ConnectorPoint PointX="5.25" PointY="7.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="GRHProjectModel.FK_EST_GERE_PAR_SERVICE" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="11.188460538461539" />
+          <ConnectorPoint PointX="5.0625" PointY="10.625960538461539" />
+          <ConnectorPoint PointX="5.0625" PointY="5.5970027324218758" />
+          <ConnectorPoint PointX="5.25" PointY="5.5970027324218758" />
+        </AssociationConnector>
+        <AssociationConnector Association="GRHProjectModel.FK_SIGNE_METIER" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="8.56346053846154" />
+          <ConnectorPoint PointX="4.9375" PointY="8.12596053846154" />
+          <ConnectorPoint PointX="4.9375" PointY="2.6265112304687497" />
+          <ConnectorPoint PointX="5.25" PointY="2.6265112304687497" />
+        </AssociationConnector>
+        <AssociationConnector Association="GRHProjectModel.FK_TRAVAILLE_SERVICE" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="12.148483257512019" />
+          <ConnectorPoint PointX="6" PointY="12.148483257512019" />
+          <ConnectorPoint PointX="6" PointY="9.0460009765625031" />
+        </AssociationConnector>
+        <AssociationConnector Association="GRHProjectModel.AVOIR" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="5.1283268229166667" />
+          <ConnectorPoint PointX="3" PointY="5.1283268229166667" />
+        </AssociationConnector>
+        <AssociationConnector Association="GRHProjectModel.DISPOSE" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="2.8423063151041674" />
+          <ConnectorPoint PointX="2.625" PointY="3.2173063151041674" />
+          <ConnectorPoint PointX="2.625" PointY="3.125" />
+          <ConnectorPoint PointX="3" PointY="3.5" />
+        </AssociationConnector>
+        <AssociationConnector Association="GRHProjectModel.POSSEDE" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="7.5" />
+          <ConnectorPoint PointX="2.625" PointY="7.125" />
+          <ConnectorPoint PointX="2.625" PointY="5.96330522265625" />
+          <ConnectorPoint PointX="3" PointY="5.96330522265625" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

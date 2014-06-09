@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{86E221EA-70C2-4833-BB76-596A18FE6F88}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Projet_Developpement</RootNamespace>
+    <AssemblyName>Projet_Developpement</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="connexion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="connexion.Designer.cs">
+      <DependentUpon>connexion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="liste_contrats.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="liste_contrats.Designer.cs">
+      <DependentUpon>liste_contrats.cs</DependentUpon>
+    </Compile>
+    <Compile Include="liste_emp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="liste_emp.Designer.cs">
+      <DependentUpon>liste_emp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EMPLOYE.cs" />
+    <Compile Include="liste_dip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="liste_dip.Designer.cs">
+      <DependentUpon>liste_dip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="liste_choix.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="liste_choix.Designer.cs">
+      <DependentUpon>liste_choix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GRH.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GRH.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="details_employe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="details_employe.Designer.cs">
+      <DependentUpon>details_employe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="liste_metiers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="liste_metiers.Designer.cs">
+      <DependentUpon>liste_metiers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main_menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main_menu.Designer.cs">
+      <DependentUpon>Main_menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="connexion.resx">
+      <DependentUpon>connexion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="liste_contrats.resx">
+      <DependentUpon>liste_contrats.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="liste_dip.resx">
+      <DependentUpon>liste_dip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="liste_choix.resx">
+      <DependentUpon>liste_choix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="details_employe.resx">
+      <DependentUpon>details_employe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="liste_emp.resx">
+      <DependentUpon>liste_emp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="liste_metiers.resx">
+      <DependentUpon>liste_metiers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main_menu.resx">
+      <DependentUpon>Main_menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="App.Config" />
+    <EntityDeploy Include="GRH.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GRH.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Properties\DataSources\CONTRAT.datasource" />
+    <None Include="Properties\DataSources\DIPLOME.datasource" />
+    <None Include="Properties\DataSources\EMPLOYE.datasource" />
+    <None Include="Properties\DataSources\GRHProjectEntities.datasource" />
+    <None Include="Properties\DataSources\GRHProjectEntities1.datasource" />
+    <None Include="Properties\DataSources\METIER.datasource" />
+    <None Include="Properties\DataSources\SERVICE.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
