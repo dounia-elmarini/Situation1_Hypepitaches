@@ -84,8 +84,32 @@ namespace Projet_Developpement
             connexion.Insert("INSERT INTO ABSENCE (ABSENCE_DATEDEB, ABSENCE_DATEFIN, ABSENCE_DESCRIPTION) VALUES ('" + dtp_1.Value + "', '" + dtp_2.Value + "', '" + cb_emp.Text + " : " + tb_motif.Text + "')");
         }
 
+        private void dgv_comp_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgv_comp.Columns[e.ColumnIndex].Name == "LesEmployes")
+            {
+                COMPETENCE lesComp = (COMPETENCE)(dgv_comp.CurrentRow.DataBoundItem);
 
+                if (lesComp != null)
+                {
+                    list_empCompetences fcom = new list_empCompetences(bd, lesComp);
+                    fcom.ShowDialog();
+                }
+            }
+        }
 
+        private void dgv_serv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgv_serv.Columns[e.ColumnIndex].Name == "Employes")
+            {
+                SERVICE lesServ = (SERVICE)(dgv_serv.CurrentRow.DataBoundItem);
 
+                if (lesServ != null)
+                {
+                    list_empService fcom = new list_empService(bd, lesServ);
+                    fcom.ShowDialog();
+                }
+            }
+        }
     }
 }

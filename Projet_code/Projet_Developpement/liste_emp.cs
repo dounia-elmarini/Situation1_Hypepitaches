@@ -31,7 +31,6 @@ namespace Projet_Developpement
                    details_employe fcom = new details_employe(bd, lesEmployes);
                    fcom.ShowDialog();
                }
-
            }
        }
 
@@ -40,9 +39,5 @@ namespace Projet_Developpement
            list_ajoutemp ajout_emp = new list_ajoutemp(bd);
            ajout_emp.ShowDialog();
        }
-
-
-
-
     }
 }

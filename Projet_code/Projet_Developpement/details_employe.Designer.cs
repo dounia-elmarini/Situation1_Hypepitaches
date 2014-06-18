@@ -40,9 +40,9 @@
             System.Windows.Forms.Label leServiceLabel;
             System.Windows.Forms.Label mETIER_NOMLabel;
             System.Windows.Forms.Label label1;
-            System.Windows.Forms.Label lesContratsLabel;
             System.Windows.Forms.Label sALAIRELabel;
             System.Windows.Forms.Label dATE_DEBUTSLabel;
+            System.Windows.Forms.Label lesContratsLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(details_employe));
             this.bs = new System.Windows.Forms.BindingSource(this.components);
             this.bn = new System.Windows.Forms.BindingNavigator(this.components);
@@ -52,30 +52,30 @@
             this.eMP_CPTextBox = new System.Windows.Forms.TextBox();
             this.eMP_IDTextBox = new System.Windows.Forms.TextBox();
             this.eMP_MAILTextBox = new System.Windows.Forms.TextBox();
-            this.eMP_NOMTextBox = new System.Windows.Forms.TextBox();
+            this.tb_nom = new System.Windows.Forms.TextBox();
             this.eMP_PRENOMTextBox = new System.Windows.Forms.TextBox();
             this.eMP_TELTextBox = new System.Windows.Forms.TextBox();
             this.eMP_VILLETextBox = new System.Windows.Forms.TextBox();
             this.bs_diplomesPossedes = new System.Windows.Forms.BindingSource(this.components);
             this.lb_diplomesPossedes = new System.Windows.Forms.ListBox();
-            this.bs_travaille_service = new System.Windows.Forms.BindingSource(this.components);
-            this.cb_service = new System.Windows.Forms.ComboBox();
-            this.bs_service = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rb_masculin = new System.Windows.Forms.RadioButton();
             this.rb_feminin = new System.Windows.Forms.RadioButton();
-            this.bs_metier = new System.Windows.Forms.BindingSource(this.components);
-            this.bs_signe_metier = new System.Windows.Forms.BindingSource(this.components);
-            this.lesMetiersComboBox = new System.Windows.Forms.ComboBox();
-            this.cb_contrat = new System.Windows.Forms.ComboBox();
-            this.bs_contrat = new System.Windows.Forms.BindingSource(this.components);
-            this.sALAIRETextBox = new System.Windows.Forms.TextBox();
-            this.dATE_DEBUTSDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
             this.bt_versDiplomesPossedes = new System.Windows.Forms.Button();
             this.bt_versAutresDiplomes = new System.Windows.Forms.Button();
             this.lb_autresDiplomes = new System.Windows.Forms.ListBox();
             this.bs_autresDiplomes = new System.Windows.Forms.BindingSource(this.components);
+            this.cb_service = new System.Windows.Forms.ComboBox();
+            this.bs_service = new System.Windows.Forms.BindingSource(this.components);
+            this.cb_metier = new System.Windows.Forms.ComboBox();
+            this.bs_metier = new System.Windows.Forms.BindingSource(this.components);
+            this.bs_contrat = new System.Windows.Forms.BindingSource(this.components);
+            this.bs_signe = new System.Windows.Forms.BindingSource(this.components);
+            this.lesContratsComboBox = new System.Windows.Forms.ComboBox();
+            this.dATE_DEBUTSDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.sALAIRETextBox = new System.Windows.Forms.TextBox();
+            this.bs_comp = new System.Windows.Forms.BindingSource(this.components);
             eMP_ADRESSELabel = new System.Windows.Forms.Label();
             eMP_CPLabel = new System.Windows.Forms.Label();
             eMP_IDLabel = new System.Windows.Forms.Label();
@@ -87,20 +87,20 @@
             leServiceLabel = new System.Windows.Forms.Label();
             mETIER_NOMLabel = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
-            lesContratsLabel = new System.Windows.Forms.Label();
             sALAIRELabel = new System.Windows.Forms.Label();
             dATE_DEBUTSLabel = new System.Windows.Forms.Label();
+            lesContratsLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bn)).BeginInit();
             this.bn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bs_diplomesPossedes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bs_travaille_service)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bs_service)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bs_metier)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bs_signe_metier)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bs_contrat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_autresDiplomes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bs_service)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bs_metier)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bs_contrat)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bs_signe)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bs_comp)).BeginInit();
             this.SuspendLayout();
             // 
             // eMP_ADRESSELabel
@@ -218,22 +218,11 @@
             label1.AutoSize = true;
             label1.BackColor = System.Drawing.Color.Transparent;
             label1.Font = new System.Drawing.Font("Gabriola", 10F);
-            label1.Location = new System.Drawing.Point(32, 379);
+            label1.Location = new System.Drawing.Point(33, 360);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(60, 26);
             label1.TabIndex = 30;
             label1.Text = "Diplôme(s)";
-            // 
-            // lesContratsLabel
-            // 
-            lesContratsLabel.AutoSize = true;
-            lesContratsLabel.BackColor = System.Drawing.Color.Transparent;
-            lesContratsLabel.Font = new System.Drawing.Font("Gabriola", 10F);
-            lesContratsLabel.Location = new System.Drawing.Point(313, 120);
-            lesContratsLabel.Name = "lesContratsLabel";
-            lesContratsLabel.Size = new System.Drawing.Size(45, 26);
-            lesContratsLabel.TabIndex = 30;
-            lesContratsLabel.Text = "Contrat";
             // 
             // sALAIRELabel
             // 
@@ -257,6 +246,17 @@
             dATE_DEBUTSLabel.TabIndex = 39;
             dATE_DEBUTSLabel.Text = "Date de signature";
             // 
+            // lesContratsLabel
+            // 
+            lesContratsLabel.AutoSize = true;
+            lesContratsLabel.BackColor = System.Drawing.Color.Transparent;
+            lesContratsLabel.Font = new System.Drawing.Font("Gabriola", 10F);
+            lesContratsLabel.Location = new System.Drawing.Point(313, 120);
+            lesContratsLabel.Name = "lesContratsLabel";
+            lesContratsLabel.Size = new System.Drawing.Size(45, 26);
+            lesContratsLabel.TabIndex = 30;
+            lesContratsLabel.Text = "Contrat";
+            // 
             // bs
             // 
             this.bs.DataSource = typeof(Projet_Developpement.EMPLOYE);
@@ -279,7 +279,7 @@
             this.bn.MovePreviousItem = null;
             this.bn.Name = "bn";
             this.bn.PositionItem = null;
-            this.bn.Size = new System.Drawing.Size(698, 25);
+            this.bn.Size = new System.Drawing.Size(652, 25);
             this.bn.TabIndex = 0;
             this.bn.Text = "bindingNavigator1";
             // 
@@ -335,13 +335,13 @@
             this.eMP_MAILTextBox.Size = new System.Drawing.Size(100, 20);
             this.eMP_MAILTextBox.TabIndex = 8;
             // 
-            // eMP_NOMTextBox
+            // tb_nom
             // 
-            this.eMP_NOMTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bs, "EMP_NOM", true));
-            this.eMP_NOMTextBox.Location = new System.Drawing.Point(118, 77);
-            this.eMP_NOMTextBox.Name = "eMP_NOMTextBox";
-            this.eMP_NOMTextBox.Size = new System.Drawing.Size(100, 20);
-            this.eMP_NOMTextBox.TabIndex = 10;
+            this.tb_nom.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bs, "EMP_NOM", true));
+            this.tb_nom.Location = new System.Drawing.Point(118, 77);
+            this.tb_nom.Name = "tb_nom";
+            this.tb_nom.Size = new System.Drawing.Size(100, 20);
+            this.tb_nom.TabIndex = 10;
             // 
             // eMP_PRENOMTextBox
             // 
@@ -377,31 +377,11 @@
             this.lb_diplomesPossedes.DataSource = this.bs_diplomesPossedes;
             this.lb_diplomesPossedes.DisplayMember = "DIPLOME_NOM";
             this.lb_diplomesPossedes.FormattingEnabled = true;
-            this.lb_diplomesPossedes.Location = new System.Drawing.Point(117, 379);
+            this.lb_diplomesPossedes.Location = new System.Drawing.Point(117, 366);
             this.lb_diplomesPossedes.Name = "lb_diplomesPossedes";
-            this.lb_diplomesPossedes.Size = new System.Drawing.Size(168, 43);
+            this.lb_diplomesPossedes.Size = new System.Drawing.Size(172, 69);
             this.lb_diplomesPossedes.TabIndex = 17;
             this.lb_diplomesPossedes.ValueMember = "DIPLOME_ID";
-            // 
-            // bs_travaille_service
-            // 
-            this.bs_travaille_service.DataMember = "TRAVAILLE";
-            this.bs_travaille_service.DataSource = this.bs;
-            // 
-            // cb_service
-            // 
-            this.cb_service.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.bs_travaille_service, "LeService", true));
-            this.cb_service.DataSource = this.bs_service;
-            this.cb_service.DisplayMember = "SERVICE_DESIGNATION";
-            this.cb_service.FormattingEnabled = true;
-            this.cb_service.Location = new System.Drawing.Point(415, 301);
-            this.cb_service.Name = "cb_service";
-            this.cb_service.Size = new System.Drawing.Size(168, 21);
-            this.cb_service.TabIndex = 27;
-            // 
-            // bs_service
-            // 
-            this.bs_service.DataSource = typeof(Projet_Developpement.SERVICE);
             // 
             // groupBox1
             // 
@@ -440,64 +420,14 @@
             this.rb_feminin.Text = "F";
             this.rb_feminin.UseVisualStyleBackColor = true;
             // 
-            // bs_metier
-            // 
-            this.bs_metier.DataSource = typeof(Projet_Developpement.METIER);
-            // 
-            // bs_signe_metier
-            // 
-            this.bs_signe_metier.DataMember = "SIGNE";
-            this.bs_signe_metier.DataSource = this.bs;
-            // 
-            // lesMetiersComboBox
-            // 
-            this.lesMetiersComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.bs_signe_metier, "LesMetiers", true));
-            this.lesMetiersComboBox.DataSource = this.bs_metier;
-            this.lesMetiersComboBox.DisplayMember = "METIER_NOM";
-            this.lesMetiersComboBox.FormattingEnabled = true;
-            this.lesMetiersComboBox.Location = new System.Drawing.Point(415, 253);
-            this.lesMetiersComboBox.Name = "lesMetiersComboBox";
-            this.lesMetiersComboBox.Size = new System.Drawing.Size(168, 21);
-            this.lesMetiersComboBox.TabIndex = 29;
-            // 
-            // cb_contrat
-            // 
-            this.cb_contrat.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.bs_signe_metier, "LesContrats", true));
-            this.cb_contrat.DataSource = this.bs_contrat;
-            this.cb_contrat.DisplayMember = "CONTRAT_NOM";
-            this.cb_contrat.FormattingEnabled = true;
-            this.cb_contrat.Location = new System.Drawing.Point(415, 120);
-            this.cb_contrat.Name = "cb_contrat";
-            this.cb_contrat.Size = new System.Drawing.Size(169, 21);
-            this.cb_contrat.TabIndex = 31;
-            // 
-            // bs_contrat
-            // 
-            this.bs_contrat.DataSource = typeof(Projet_Developpement.CONTRAT);
-            // 
-            // sALAIRETextBox
-            // 
-            this.sALAIRETextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bs_signe_metier, "SALAIRE", true));
-            this.sALAIRETextBox.Location = new System.Drawing.Point(415, 208);
-            this.sALAIRETextBox.Name = "sALAIRETextBox";
-            this.sALAIRETextBox.Size = new System.Drawing.Size(169, 20);
-            this.sALAIRETextBox.TabIndex = 38;
-            // 
-            // dATE_DEBUTSDateTimePicker
-            // 
-            this.dATE_DEBUTSDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.bs_signe_metier, "DATE_DEBUTS", true));
-            this.dATE_DEBUTSDateTimePicker.Location = new System.Drawing.Point(415, 167);
-            this.dATE_DEBUTSDateTimePicker.Name = "dATE_DEBUTSDateTimePicker";
-            this.dATE_DEBUTSDateTimePicker.Size = new System.Drawing.Size(169, 20);
-            this.dATE_DEBUTSDateTimePicker.TabIndex = 40;
-            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(65, 402);
+            this.button1.Location = new System.Drawing.Point(67, 385);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(27, 20);
             this.button1.TabIndex = 41;
@@ -507,10 +437,11 @@
             // bt_versDiplomesPossedes
             // 
             this.bt_versDiplomesPossedes.BackColor = System.Drawing.Color.Transparent;
+            this.bt_versDiplomesPossedes.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bt_versDiplomesPossedes.FlatAppearance.BorderSize = 0;
             this.bt_versDiplomesPossedes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bt_versDiplomesPossedes.Image = ((System.Drawing.Image)(resources.GetObject("bt_versDiplomesPossedes.Image")));
-            this.bt_versDiplomesPossedes.Location = new System.Drawing.Point(309, 387);
+            this.bt_versDiplomesPossedes.Location = new System.Drawing.Point(334, 387);
             this.bt_versDiplomesPossedes.Name = "bt_versDiplomesPossedes";
             this.bt_versDiplomesPossedes.Size = new System.Drawing.Size(24, 18);
             this.bt_versDiplomesPossedes.TabIndex = 42;
@@ -521,10 +452,11 @@
             // bt_versAutresDiplomes
             // 
             this.bt_versAutresDiplomes.BackColor = System.Drawing.Color.Transparent;
+            this.bt_versAutresDiplomes.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bt_versAutresDiplomes.FlatAppearance.BorderSize = 0;
             this.bt_versAutresDiplomes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bt_versAutresDiplomes.Image = ((System.Drawing.Image)(resources.GetObject("bt_versAutresDiplomes.Image")));
-            this.bt_versAutresDiplomes.Location = new System.Drawing.Point(309, 402);
+            this.bt_versAutresDiplomes.Location = new System.Drawing.Point(334, 402);
             this.bt_versAutresDiplomes.Name = "bt_versAutresDiplomes";
             this.bt_versAutresDiplomes.Size = new System.Drawing.Size(26, 20);
             this.bt_versAutresDiplomes.TabIndex = 43;
@@ -535,11 +467,10 @@
             // lb_autresDiplomes
             // 
             this.lb_autresDiplomes.DataSource = this.bs_autresDiplomes;
-            this.lb_autresDiplomes.DisplayMember = "DIPLOME_NOM";
             this.lb_autresDiplomes.FormattingEnabled = true;
-            this.lb_autresDiplomes.Location = new System.Drawing.Point(415, 379);
+            this.lb_autresDiplomes.Location = new System.Drawing.Point(415, 366);
             this.lb_autresDiplomes.Name = "lb_autresDiplomes";
-            this.lb_autresDiplomes.Size = new System.Drawing.Size(169, 43);
+            this.lb_autresDiplomes.Size = new System.Drawing.Size(169, 69);
             this.lb_autresDiplomes.TabIndex = 44;
             this.lb_autresDiplomes.Visible = false;
             // 
@@ -547,28 +478,99 @@
             // 
             this.bs_autresDiplomes.DataSource = typeof(Projet_Developpement.DIPLOME);
             // 
+            // cb_service
+            // 
+            this.cb_service.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.bs, "LesServices", true));
+            this.cb_service.DataSource = this.bs_service;
+            this.cb_service.DisplayMember = "SERVICE_DESIGNATION";
+            this.cb_service.FormattingEnabled = true;
+            this.cb_service.Location = new System.Drawing.Point(415, 305);
+            this.cb_service.Name = "cb_service";
+            this.cb_service.Size = new System.Drawing.Size(169, 21);
+            this.cb_service.TabIndex = 45;
+            // 
+            // bs_service
+            // 
+            this.bs_service.DataSource = typeof(Projet_Developpement.SERVICE);
+            // 
+            // cb_metier
+            // 
+            this.cb_metier.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.bs, "LesMetiers", true));
+            this.cb_metier.DataSource = this.bs_metier;
+            this.cb_metier.DisplayMember = "METIER_NOM";
+            this.cb_metier.FormattingEnabled = true;
+            this.cb_metier.Location = new System.Drawing.Point(415, 253);
+            this.cb_metier.Name = "cb_metier";
+            this.cb_metier.Size = new System.Drawing.Size(169, 21);
+            this.cb_metier.TabIndex = 46;
+            // 
+            // bs_metier
+            // 
+            this.bs_metier.DataSource = typeof(Projet_Developpement.METIER);
+            // 
+            // bs_contrat
+            // 
+            this.bs_contrat.DataSource = typeof(Projet_Developpement.CONTRAT);
+            // 
+            // bs_signe
+            // 
+            this.bs_signe.DataMember = "SIGNE";
+            this.bs_signe.DataSource = this.bs;
+            // 
+            // lesContratsComboBox
+            // 
+            this.lesContratsComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.bs_signe, "LesContrats", true));
+            this.lesContratsComboBox.DataSource = this.bs_contrat;
+            this.lesContratsComboBox.DisplayMember = "CONTRAT_NOM";
+            this.lesContratsComboBox.FormattingEnabled = true;
+            this.lesContratsComboBox.Location = new System.Drawing.Point(415, 125);
+            this.lesContratsComboBox.Name = "lesContratsComboBox";
+            this.lesContratsComboBox.Size = new System.Drawing.Size(169, 21);
+            this.lesContratsComboBox.TabIndex = 47;
+            // 
+            // dATE_DEBUTSDateTimePicker
+            // 
+            this.dATE_DEBUTSDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.bs_signe, "DATE_DEBUTS", true));
+            this.dATE_DEBUTSDateTimePicker.Location = new System.Drawing.Point(415, 167);
+            this.dATE_DEBUTSDateTimePicker.Name = "dATE_DEBUTSDateTimePicker";
+            this.dATE_DEBUTSDateTimePicker.Size = new System.Drawing.Size(169, 20);
+            this.dATE_DEBUTSDateTimePicker.TabIndex = 48;
+            // 
+            // sALAIRETextBox
+            // 
+            this.sALAIRETextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bs_signe, "SALAIRE", true));
+            this.sALAIRETextBox.Location = new System.Drawing.Point(415, 212);
+            this.sALAIRETextBox.Name = "sALAIRETextBox";
+            this.sALAIRETextBox.Size = new System.Drawing.Size(169, 20);
+            this.sALAIRETextBox.TabIndex = 49;
+            // 
+            // bs_comp
+            // 
+            this.bs_comp.DataMember = "LesCompetences";
+            this.bs_comp.DataSource = this.bs;
+            // 
             // details_employe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(698, 451);
+            this.ClientSize = new System.Drawing.Size(652, 450);
+            this.Controls.Add(this.sALAIRETextBox);
+            this.Controls.Add(this.dATE_DEBUTSDateTimePicker);
+            this.Controls.Add(this.lesContratsComboBox);
+            this.Controls.Add(this.cb_metier);
+            this.Controls.Add(this.cb_service);
             this.Controls.Add(this.lb_autresDiplomes);
             this.Controls.Add(this.bt_versAutresDiplomes);
             this.Controls.Add(this.bt_versDiplomesPossedes);
             this.Controls.Add(this.button1);
             this.Controls.Add(sALAIRELabel);
-            this.Controls.Add(this.sALAIRETextBox);
             this.Controls.Add(dATE_DEBUTSLabel);
-            this.Controls.Add(this.dATE_DEBUTSDateTimePicker);
             this.Controls.Add(lesContratsLabel);
-            this.Controls.Add(this.cb_contrat);
             this.Controls.Add(label1);
-            this.Controls.Add(this.lesMetiersComboBox);
             this.Controls.Add(mETIER_NOMLabel);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(leServiceLabel);
-            this.Controls.Add(this.cb_service);
             this.Controls.Add(this.lb_diplomesPossedes);
             this.Controls.Add(eMP_ADRESSELabel);
             this.Controls.Add(this.eMP_ADRESSETextBox);
@@ -579,7 +581,7 @@
             this.Controls.Add(eMP_MAILLabel);
             this.Controls.Add(this.eMP_MAILTextBox);
             this.Controls.Add(eMP_NOMLabel);
-            this.Controls.Add(this.eMP_NOMTextBox);
+            this.Controls.Add(this.tb_nom);
             this.Controls.Add(eMP_PRENOMLabel);
             this.Controls.Add(this.eMP_PRENOMTextBox);
             this.Controls.Add(eMP_TELLabel);
@@ -595,14 +597,14 @@
             this.bn.ResumeLayout(false);
             this.bn.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bs_diplomesPossedes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bs_travaille_service)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bs_service)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bs_metier)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bs_signe_metier)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bs_contrat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_autresDiplomes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bs_service)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bs_metier)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bs_contrat)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bs_signe)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bs_comp)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -617,30 +619,30 @@
         private System.Windows.Forms.TextBox eMP_CPTextBox;
         private System.Windows.Forms.TextBox eMP_IDTextBox;
         private System.Windows.Forms.TextBox eMP_MAILTextBox;
-        private System.Windows.Forms.TextBox eMP_NOMTextBox;
+        private System.Windows.Forms.TextBox tb_nom;
         private System.Windows.Forms.TextBox eMP_PRENOMTextBox;
         private System.Windows.Forms.TextBox eMP_TELTextBox;
         private System.Windows.Forms.TextBox eMP_VILLETextBox;
         private System.Windows.Forms.BindingSource bs_diplomesPossedes;
         private System.Windows.Forms.ListBox lb_diplomesPossedes;
-        private System.Windows.Forms.BindingSource bs_travaille_service;
-        private System.Windows.Forms.ComboBox cb_service;
-        private System.Windows.Forms.BindingSource bs_service;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rb_masculin;
         private System.Windows.Forms.RadioButton rb_feminin;
-        private System.Windows.Forms.BindingSource bs_metier;
-        private System.Windows.Forms.BindingSource bs_signe_metier;
-        private System.Windows.Forms.ComboBox lesMetiersComboBox;
-        private System.Windows.Forms.ComboBox cb_contrat;
-        private System.Windows.Forms.BindingSource bs_contrat;
-        private System.Windows.Forms.TextBox sALAIRETextBox;
-        private System.Windows.Forms.DateTimePicker dATE_DEBUTSDateTimePicker;
         private System.Windows.Forms.Button button1;
         public System.Windows.Forms.BindingSource bs;
         private System.Windows.Forms.Button bt_versDiplomesPossedes;
         private System.Windows.Forms.Button bt_versAutresDiplomes;
         private System.Windows.Forms.ListBox lb_autresDiplomes;
         private System.Windows.Forms.BindingSource bs_autresDiplomes;
+        private System.Windows.Forms.ComboBox cb_service;
+        private System.Windows.Forms.BindingSource bs_service;
+        private System.Windows.Forms.ComboBox cb_metier;
+        private System.Windows.Forms.BindingSource bs_metier;
+        private System.Windows.Forms.BindingSource bs_contrat;
+        private System.Windows.Forms.BindingSource bs_signe;
+        private System.Windows.Forms.ComboBox lesContratsComboBox;
+        private System.Windows.Forms.DateTimePicker dATE_DEBUTSDateTimePicker;
+        private System.Windows.Forms.TextBox sALAIRETextBox;
+        private System.Windows.Forms.BindingSource bs_comp;
     }
 }

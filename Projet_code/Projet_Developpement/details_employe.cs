@@ -12,15 +12,16 @@ namespace Projet_Developpement
     public partial class details_employe : Form
     {
         private GRHProjectEntities1 bd;
+        Connect seConnecter = new Connect();
         public details_employe(GRHProjectEntities1 p_bd, EMPLOYE employes)
         {
             InitializeComponent();
             bd = p_bd;
             bs.DataSource = bd.EMPLOYE;
-            bs_service.DataSource = bd.SERVICE;
             bs_metier.DataSource = bd.METIER;
-            bs_contrat.DataSource = bd.CONTRAT;
+            bs_service.DataSource = bd.SERVICE;
             bs.DataSource = bd.EMPLOYE.Include("LesDiplomes");
+            bs_contrat.DataSource = bd.CONTRAT;
             bs_autresDiplomes.DataSource = bd.DIPLOME;
             bs.Position = bs.List.IndexOf(employes);
         }
@@ -30,6 +31,11 @@ namespace Projet_Developpement
             if (bs.Current != null)
             {
                 bs.EndEdit();
+                bd.SaveChanges();
+            }
+            if (bs_signe.Current != null)
+            {
+                bs_signe.EndEdit();
                 bd.SaveChanges();
             }
         }
@@ -45,14 +51,34 @@ namespace Projet_Developpement
 
         private void bs_CurrentChanged(object sender, EventArgs e)
         {
-            if (bs.Current != null) 
+            if (bs.Current != null)
             {
-                bd.SaveChanges(); 
+                EMPLOYE leEmploye = (EMPLOYE)bs.Current;
+                if (leEmploye.LesServices == null)
+                {
+                    cb_service.SelectedIndex = -1;
+                }
+                if (leEmploye.EntityState == EntityState.Detached)
+                {
+                    bs.EndEdit();
+                    bs.RaiseListChangedEvents = false;
+                    bd.SaveChanges();
+                    bs.RaiseListChangedEvents = true;
+                    bs.ResetCurrentItem();
+                }
+                else
+                {
+                    bd.SaveChanges();
+                }
+                bs_autresDiplomes.DataSource = bd.DIPLOME.ToList().Except(leEmploye.LesDiplomes).ToList();
+                // En l’absence du dernier « ToList() », l’affectation de « DisplayMember » ci-dessous échoue avec une liste vide
+                lb_autresDiplomes.DisplayMember = "DIPLOME_NOM";
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            bt_versAutresDiplomes.Visible = bt_versDiplomesPossedes.Visible = lb_autresDiplomes.Visible = true;
         }
 
         private void bt_versAutresDiplomes_Click(object sender, EventArgs e)
@@ -79,9 +105,8 @@ namespace Projet_Developpement
                     DIPLOME leDiplome = (DIPLOME)lb_autresDiplomes.SelectedItem;
                     leEmploye.LesDiplomes.Add(leDiplome);
                     bs_autresDiplomes.Remove(leDiplome);
-} }
+                }
+            }
         }
-
-
     }
 }

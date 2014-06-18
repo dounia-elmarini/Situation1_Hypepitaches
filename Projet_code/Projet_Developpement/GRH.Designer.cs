@@ -22,13 +22,12 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("GRHProjectModel", "FK_SIGNE_CONTRAT", "CONTRAT", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Projet_Developpement.CONTRAT), "SIGNE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Projet_Developpement.SIGNE), true)]
 [assembly: EdmRelationshipAttribute("GRHProjectModel", "FK_EST_GERE_PAR_EMPLOYE", "EMPLOYE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Projet_Developpement.EMPLOYE), "EST_GERE_PAR", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Projet_Developpement.EST_GERE_PAR), true)]
 [assembly: EdmRelationshipAttribute("GRHProjectModel", "FK_SIGNE_EMPLOYE", "EMPLOYE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Projet_Developpement.EMPLOYE), "SIGNE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Projet_Developpement.SIGNE), true)]
-[assembly: EdmRelationshipAttribute("GRHProjectModel", "FK_TRAVAILLE_EMPLOYE", "EMPLOYE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Projet_Developpement.EMPLOYE), "TRAVAILLE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Projet_Developpement.TRAVAILLE), true)]
 [assembly: EdmRelationshipAttribute("GRHProjectModel", "FK_EST_GERE_PAR_SERVICE", "SERVICE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Projet_Developpement.SERVICE), "EST_GERE_PAR", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Projet_Developpement.EST_GERE_PAR), true)]
-[assembly: EdmRelationshipAttribute("GRHProjectModel", "FK_SIGNE_METIER", "METIER", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Projet_Developpement.METIER), "SIGNE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Projet_Developpement.SIGNE), true)]
-[assembly: EdmRelationshipAttribute("GRHProjectModel", "FK_TRAVAILLE_SERVICE", "SERVICE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Projet_Developpement.SERVICE), "TRAVAILLE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Projet_Developpement.TRAVAILLE), true)]
 [assembly: EdmRelationshipAttribute("GRHProjectModel", "AVOIR", "ABSENCE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Projet_Developpement.ABSENCE), "EMPLOYE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Projet_Developpement.EMPLOYE))]
 [assembly: EdmRelationshipAttribute("GRHProjectModel", "DISPOSE", "COMPETENCE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Projet_Developpement.COMPETENCE), "EMPLOYE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Projet_Developpement.EMPLOYE))]
 [assembly: EdmRelationshipAttribute("GRHProjectModel", "POSSEDE", "DIPLOME", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Projet_Developpement.DIPLOME), "EMPLOYE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Projet_Developpement.EMPLOYE))]
+[assembly: EdmRelationshipAttribute("GRHProjectModel", "FK_EMPLOYE_METIER", "METIER", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Projet_Developpement.METIER), "EMPLOYE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Projet_Developpement.EMPLOYE), true)]
+[assembly: EdmRelationshipAttribute("GRHProjectModel", "FK_EMPLOYE_SERVICE", "SERVICE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Projet_Developpement.SERVICE), "EMPLOYE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Projet_Developpement.EMPLOYE), true)]
 
 #endregion
 
@@ -255,22 +254,6 @@ namespace Projet_Developpement
             }
         }
         private ObjectSet<sysdiagrams> _sysdiagrams;
-    
-        /// <summary>
-        /// Aucune documentation sur les métadonnées n'est disponible.
-        /// </summary>
-        public ObjectSet<TRAVAILLE> TRAVAILLE
-        {
-            get
-            {
-                if ((_TRAVAILLE == null))
-                {
-                    _TRAVAILLE = base.CreateObjectSet<TRAVAILLE>("TRAVAILLE");
-                }
-                return _TRAVAILLE;
-            }
-        }
-        private ObjectSet<TRAVAILLE> _TRAVAILLE;
 
         #endregion
 
@@ -362,14 +345,6 @@ namespace Projet_Developpement
         public void AddTosysdiagrams(sysdiagrams sysdiagrams)
         {
             base.AddObject("sysdiagrams", sysdiagrams);
-        }
-    
-        /// <summary>
-        /// Méthode déconseillée pour ajouter un nouvel objet à l'EntitySet TRAVAILLE. Utilisez la méthode .Add de la propriété ObjectSet&lt;T&gt; associée à la place.
-        /// </summary>
-        public void AddToTRAVAILLE(TRAVAILLE tRAVAILLE)
-        {
-            base.AddObject("TRAVAILLE", tRAVAILLE);
         }
 
         #endregion
@@ -686,10 +661,12 @@ namespace Projet_Developpement
         /// Créez un nouvel objet CONTRAT.
         /// </summary>
         /// <param name="cONTRAT_NUM">Valeur initiale de la propriété CONTRAT_NUM.</param>
-        public static CONTRAT CreateCONTRAT(global::System.Int32 cONTRAT_NUM)
+        /// <param name="cONTRAT_NOM">Valeur initiale de la propriété CONTRAT_NOM.</param>
+        public static CONTRAT CreateCONTRAT(global::System.Int32 cONTRAT_NUM, global::System.String cONTRAT_NOM)
         {
             CONTRAT cONTRAT = new CONTRAT();
             cONTRAT.CONTRAT_NUM = cONTRAT_NUM;
+            cONTRAT.CONTRAT_NOM = cONTRAT_NOM;
             return cONTRAT;
         }
 
@@ -727,7 +704,7 @@ namespace Projet_Developpement
         /// <summary>
         /// Aucune documentation sur les métadonnées n'est disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String CONTRAT_NOM
         {
@@ -739,7 +716,7 @@ namespace Projet_Developpement
             {
                 OnCONTRAT_NOMChanging(value);
                 ReportPropertyChanging("CONTRAT_NOM");
-                _CONTRAT_NOM = StructuralObject.SetValidValue(value, true);
+                _CONTRAT_NOM = StructuralObject.SetValidValue(value, false);
                 ReportPropertyChanged("CONTRAT_NOM");
                 OnCONTRAT_NOMChanged();
             }
@@ -905,7 +882,9 @@ namespace Projet_Developpement
         /// <param name="eMP_ADRESSE">Valeur initiale de la propriété EMP_ADRESSE.</param>
         /// <param name="eMP_CP">Valeur initiale de la propriété EMP_CP.</param>
         /// <param name="eMP_VILLE">Valeur initiale de la propriété EMP_VILLE.</param>
-        public static EMPLOYE CreateEMPLOYE(global::System.Int32 eMP_ID, global::System.String eMP_NOM, global::System.String eMP_PRENOM, global::System.String eMP_ADRESSE, global::System.Decimal eMP_CP, global::System.String eMP_VILLE)
+        /// <param name="sERV_ID">Valeur initiale de la propriété SERV_ID.</param>
+        /// <param name="mET_ID">Valeur initiale de la propriété MET_ID.</param>
+        public static EMPLOYE CreateEMPLOYE(global::System.Int32 eMP_ID, global::System.String eMP_NOM, global::System.String eMP_PRENOM, global::System.String eMP_ADRESSE, global::System.String eMP_CP, global::System.String eMP_VILLE, global::System.Int32 sERV_ID, global::System.Int32 mET_ID)
         {
             EMPLOYE eMPLOYE = new EMPLOYE();
             eMPLOYE.EMP_ID = eMP_ID;
@@ -914,6 +893,8 @@ namespace Projet_Developpement
             eMPLOYE.EMP_ADRESSE = eMP_ADRESSE;
             eMPLOYE.EMP_CP = eMP_CP;
             eMPLOYE.EMP_VILLE = eMP_VILLE;
+            eMPLOYE.SERV_ID = sERV_ID;
+            eMPLOYE.MET_ID = mET_ID;
             return eMPLOYE;
         }
 
@@ -1025,7 +1006,7 @@ namespace Projet_Developpement
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Decimal EMP_CP
+        public global::System.String EMP_CP
         {
             get
             {
@@ -1035,13 +1016,13 @@ namespace Projet_Developpement
             {
                 OnEMP_CPChanging(value);
                 ReportPropertyChanging("EMP_CP");
-                _EMP_CP = StructuralObject.SetValidValue(value);
+                _EMP_CP = StructuralObject.SetValidValue(value, false);
                 ReportPropertyChanged("EMP_CP");
                 OnEMP_CPChanged();
             }
         }
-        private global::System.Decimal _EMP_CP;
-        partial void OnEMP_CPChanging(global::System.Decimal value);
+        private global::System.String _EMP_CP;
+        partial void OnEMP_CPChanging(global::System.String value);
         partial void OnEMP_CPChanged();
     
         /// <summary>
@@ -1073,7 +1054,7 @@ namespace Projet_Developpement
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Decimal> EMP_TEL
+        public global::System.String EMP_TEL
         {
             get
             {
@@ -1083,13 +1064,13 @@ namespace Projet_Developpement
             {
                 OnEMP_TELChanging(value);
                 ReportPropertyChanging("EMP_TEL");
-                _EMP_TEL = StructuralObject.SetValidValue(value);
+                _EMP_TEL = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("EMP_TEL");
                 OnEMP_TELChanged();
             }
         }
-        private Nullable<global::System.Decimal> _EMP_TEL;
-        partial void OnEMP_TELChanging(Nullable<global::System.Decimal> value);
+        private global::System.String _EMP_TEL;
+        partial void OnEMP_TELChanging(global::System.String value);
         partial void OnEMP_TELChanged();
     
         /// <summary>
@@ -1139,6 +1120,54 @@ namespace Projet_Developpement
         private global::System.String _EMP_SEXE;
         partial void OnEMP_SEXEChanging(global::System.String value);
         partial void OnEMP_SEXEChanged();
+    
+        /// <summary>
+        /// Aucune documentation sur les métadonnées n'est disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SERV_ID
+        {
+            get
+            {
+                return _SERV_ID;
+            }
+            set
+            {
+                OnSERV_IDChanging(value);
+                ReportPropertyChanging("SERV_ID");
+                _SERV_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SERV_ID");
+                OnSERV_IDChanged();
+            }
+        }
+        private global::System.Int32 _SERV_ID;
+        partial void OnSERV_IDChanging(global::System.Int32 value);
+        partial void OnSERV_IDChanged();
+    
+        /// <summary>
+        /// Aucune documentation sur les métadonnées n'est disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 MET_ID
+        {
+            get
+            {
+                return _MET_ID;
+            }
+            set
+            {
+                OnMET_IDChanging(value);
+                ReportPropertyChanging("MET_ID");
+                _MET_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MET_ID");
+                OnMET_IDChanged();
+            }
+        }
+        private global::System.Int32 _MET_ID;
+        partial void OnMET_IDChanging(global::System.Int32 value);
+        partial void OnMET_IDChanged();
 
         #endregion
 
@@ -1185,28 +1214,6 @@ namespace Projet_Developpement
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SIGNE>("GRHProjectModel.FK_SIGNE_EMPLOYE", "SIGNE", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// Aucune documentation sur les métadonnées n'est disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRHProjectModel", "FK_TRAVAILLE_EMPLOYE", "TRAVAILLE")]
-        public EntityCollection<TRAVAILLE> TRAVAILLE
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TRAVAILLE>("GRHProjectModel.FK_TRAVAILLE_EMPLOYE", "TRAVAILLE");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TRAVAILLE>("GRHProjectModel.FK_TRAVAILLE_EMPLOYE", "TRAVAILLE", value);
                 }
             }
         }
@@ -1273,6 +1280,82 @@ namespace Projet_Developpement
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<DIPLOME>("GRHProjectModel.POSSEDE", "DIPLOME", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// Aucune documentation sur les métadonnées n'est disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GRHProjectModel", "FK_EMPLOYE_METIER", "METIER")]
+        public METIER LesMetiers
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<METIER>("GRHProjectModel.FK_EMPLOYE_METIER", "METIER").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<METIER>("GRHProjectModel.FK_EMPLOYE_METIER", "METIER").Value = value;
+            }
+        }
+        /// <summary>
+        /// Aucune documentation sur les métadonnées n'est disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<METIER> LesMetiersReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<METIER>("GRHProjectModel.FK_EMPLOYE_METIER", "METIER");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<METIER>("GRHProjectModel.FK_EMPLOYE_METIER", "METIER", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// Aucune documentation sur les métadonnées n'est disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GRHProjectModel", "FK_EMPLOYE_SERVICE", "SERVICE")]
+        public SERVICE LesServices
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SERVICE>("GRHProjectModel.FK_EMPLOYE_SERVICE", "SERVICE").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SERVICE>("GRHProjectModel.FK_EMPLOYE_SERVICE", "SERVICE").Value = value;
+            }
+        }
+        /// <summary>
+        /// Aucune documentation sur les métadonnées n'est disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<SERVICE> LesServicesReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SERVICE>("GRHProjectModel.FK_EMPLOYE_SERVICE", "SERVICE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SERVICE>("GRHProjectModel.FK_EMPLOYE_SERVICE", "SERVICE", value);
                 }
             }
         }
@@ -1715,18 +1798,18 @@ namespace Projet_Developpement
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRHProjectModel", "FK_SIGNE_METIER", "SIGNE")]
-        public EntityCollection<SIGNE> SIGNE
+        [EdmRelationshipNavigationPropertyAttribute("GRHProjectModel", "FK_EMPLOYE_METIER", "EMPLOYE")]
+        public EntityCollection<EMPLOYE> LesEmployes
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SIGNE>("GRHProjectModel.FK_SIGNE_METIER", "SIGNE");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<EMPLOYE>("GRHProjectModel.FK_EMPLOYE_METIER", "EMPLOYE");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SIGNE>("GRHProjectModel.FK_SIGNE_METIER", "SIGNE", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<EMPLOYE>("GRHProjectModel.FK_EMPLOYE_METIER", "EMPLOYE", value);
                 }
             }
         }
@@ -1898,18 +1981,18 @@ namespace Projet_Developpement
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRHProjectModel", "FK_TRAVAILLE_SERVICE", "TRAVAILLE")]
-        public EntityCollection<TRAVAILLE> TRAVAILLE
+        [EdmRelationshipNavigationPropertyAttribute("GRHProjectModel", "FK_EMPLOYE_SERVICE", "EMPLOYE")]
+        public EntityCollection<EMPLOYE> LesEmployes
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TRAVAILLE>("GRHProjectModel.FK_TRAVAILLE_SERVICE", "TRAVAILLE");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<EMPLOYE>("GRHProjectModel.FK_EMPLOYE_SERVICE", "EMPLOYE");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TRAVAILLE>("GRHProjectModel.FK_TRAVAILLE_SERVICE", "TRAVAILLE", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<EMPLOYE>("GRHProjectModel.FK_EMPLOYE_SERVICE", "EMPLOYE", value);
                 }
             }
         }
@@ -1933,15 +2016,13 @@ namespace Projet_Developpement
         /// </summary>
         /// <param name="cONTRAT_NUM">Valeur initiale de la propriété CONTRAT_NUM.</param>
         /// <param name="eMP_ID">Valeur initiale de la propriété EMP_ID.</param>
-        /// <param name="mETIER_ID">Valeur initiale de la propriété METIER_ID.</param>
         /// <param name="sALAIRE">Valeur initiale de la propriété SALAIRE.</param>
         /// <param name="dATE_DEBUTS">Valeur initiale de la propriété DATE_DEBUTS.</param>
-        public static SIGNE CreateSIGNE(global::System.Int32 cONTRAT_NUM, global::System.Int32 eMP_ID, global::System.Int32 mETIER_ID, global::System.Decimal sALAIRE, global::System.DateTime dATE_DEBUTS)
+        public static SIGNE CreateSIGNE(global::System.Int32 cONTRAT_NUM, global::System.Int32 eMP_ID, global::System.Int32 sALAIRE, global::System.DateTime dATE_DEBUTS)
         {
             SIGNE sIGNE = new SIGNE();
             sIGNE.CONTRAT_NUM = cONTRAT_NUM;
             sIGNE.EMP_ID = eMP_ID;
-            sIGNE.METIER_ID = mETIER_ID;
             sIGNE.SALAIRE = sALAIRE;
             sIGNE.DATE_DEBUTS = dATE_DEBUTS;
             return sIGNE;
@@ -2008,36 +2089,9 @@ namespace Projet_Developpement
         /// <summary>
         /// Aucune documentation sur les métadonnées n'est disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 METIER_ID
-        {
-            get
-            {
-                return _METIER_ID;
-            }
-            set
-            {
-                if (_METIER_ID != value)
-                {
-                    OnMETIER_IDChanging(value);
-                    ReportPropertyChanging("METIER_ID");
-                    _METIER_ID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("METIER_ID");
-                    OnMETIER_IDChanged();
-                }
-            }
-        }
-        private global::System.Int32 _METIER_ID;
-        partial void OnMETIER_IDChanging(global::System.Int32 value);
-        partial void OnMETIER_IDChanged();
-    
-        /// <summary>
-        /// Aucune documentation sur les métadonnées n'est disponible.
-        /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Decimal SALAIRE
+        public global::System.Int32 SALAIRE
         {
             get
             {
@@ -2052,8 +2106,8 @@ namespace Projet_Developpement
                 OnSALAIREChanged();
             }
         }
-        private global::System.Decimal _SALAIRE;
-        partial void OnSALAIREChanging(global::System.Decimal value);
+        private global::System.Int32 _SALAIRE;
+        partial void OnSALAIREChanging(global::System.Int32 value);
         partial void OnSALAIREChanged();
     
         /// <summary>
@@ -2079,30 +2133,6 @@ namespace Projet_Developpement
         private global::System.DateTime _DATE_DEBUTS;
         partial void OnDATE_DEBUTSChanging(global::System.DateTime value);
         partial void OnDATE_DEBUTSChanged();
-    
-        /// <summary>
-        /// Aucune documentation sur les métadonnées n'est disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> DATE_FINS
-        {
-            get
-            {
-                return _DATE_FINS;
-            }
-            set
-            {
-                OnDATE_FINSChanging(value);
-                ReportPropertyChanging("DATE_FINS");
-                _DATE_FINS = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("DATE_FINS");
-                OnDATE_FINSChanged();
-            }
-        }
-        private Nullable<global::System.DateTime> _DATE_FINS;
-        partial void OnDATE_FINSChanging(Nullable<global::System.DateTime> value);
-        partial void OnDATE_FINSChanged();
 
         #endregion
 
@@ -2181,44 +2211,6 @@ namespace Projet_Developpement
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<EMPLOYE>("GRHProjectModel.FK_SIGNE_EMPLOYE", "EMPLOYE", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// Aucune documentation sur les métadonnées n'est disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRHProjectModel", "FK_SIGNE_METIER", "METIER")]
-        public METIER LesMetiers
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<METIER>("GRHProjectModel.FK_SIGNE_METIER", "METIER").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<METIER>("GRHProjectModel.FK_SIGNE_METIER", "METIER").Value = value;
-            }
-        }
-        /// <summary>
-        /// Aucune documentation sur les métadonnées n'est disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<METIER> LesMetiersReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<METIER>("GRHProjectModel.FK_SIGNE_METIER", "METIER");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<METIER>("GRHProjectModel.FK_SIGNE_METIER", "METIER", value);
                 }
             }
         }
@@ -2382,172 +2374,6 @@ namespace Projet_Developpement
         #endregion
 
     
-    }
-    
-    /// <summary>
-    /// Aucune documentation sur les métadonnées n'est disponible.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="GRHProjectModel", Name="TRAVAILLE")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class TRAVAILLE : EntityObject
-    {
-        #region Méthode de fabrique
-    
-        /// <summary>
-        /// Créez un nouvel objet TRAVAILLE.
-        /// </summary>
-        /// <param name="eMP_ID">Valeur initiale de la propriété EMP_ID.</param>
-        /// <param name="sERVICE_ID">Valeur initiale de la propriété SERVICE_ID.</param>
-        public static TRAVAILLE CreateTRAVAILLE(global::System.Int32 eMP_ID, global::System.Int32 sERVICE_ID)
-        {
-            TRAVAILLE tRAVAILLE = new TRAVAILLE();
-            tRAVAILLE.EMP_ID = eMP_ID;
-            tRAVAILLE.SERVICE_ID = sERVICE_ID;
-            return tRAVAILLE;
-        }
-
-        #endregion
-
-        #region Propriétés primitives
-    
-        /// <summary>
-        /// Aucune documentation sur les métadonnées n'est disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 EMP_ID
-        {
-            get
-            {
-                return _EMP_ID;
-            }
-            set
-            {
-                if (_EMP_ID != value)
-                {
-                    OnEMP_IDChanging(value);
-                    ReportPropertyChanging("EMP_ID");
-                    _EMP_ID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("EMP_ID");
-                    OnEMP_IDChanged();
-                }
-            }
-        }
-        private global::System.Int32 _EMP_ID;
-        partial void OnEMP_IDChanging(global::System.Int32 value);
-        partial void OnEMP_IDChanged();
-    
-        /// <summary>
-        /// Aucune documentation sur les métadonnées n'est disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 SERVICE_ID
-        {
-            get
-            {
-                return _SERVICE_ID;
-            }
-            set
-            {
-                if (_SERVICE_ID != value)
-                {
-                    OnSERVICE_IDChanging(value);
-                    ReportPropertyChanging("SERVICE_ID");
-                    _SERVICE_ID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("SERVICE_ID");
-                    OnSERVICE_IDChanged();
-                }
-            }
-        }
-        private global::System.Int32 _SERVICE_ID;
-        partial void OnSERVICE_IDChanging(global::System.Int32 value);
-        partial void OnSERVICE_IDChanged();
-
-        #endregion
-
-    
-        #region Propriétés de navigation
-    
-        /// <summary>
-        /// Aucune documentation sur les métadonnées n'est disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRHProjectModel", "FK_TRAVAILLE_EMPLOYE", "EMPLOYE")]
-        public EMPLOYE LesEmployes
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<EMPLOYE>("GRHProjectModel.FK_TRAVAILLE_EMPLOYE", "EMPLOYE").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<EMPLOYE>("GRHProjectModel.FK_TRAVAILLE_EMPLOYE", "EMPLOYE").Value = value;
-            }
-        }
-        /// <summary>
-        /// Aucune documentation sur les métadonnées n'est disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<EMPLOYE> LesEmployesReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<EMPLOYE>("GRHProjectModel.FK_TRAVAILLE_EMPLOYE", "EMPLOYE");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<EMPLOYE>("GRHProjectModel.FK_TRAVAILLE_EMPLOYE", "EMPLOYE", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// Aucune documentation sur les métadonnées n'est disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRHProjectModel", "FK_TRAVAILLE_SERVICE", "SERVICE")]
-        public SERVICE LeService
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SERVICE>("GRHProjectModel.FK_TRAVAILLE_SERVICE", "SERVICE").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SERVICE>("GRHProjectModel.FK_TRAVAILLE_SERVICE", "SERVICE").Value = value;
-            }
-        }
-        /// <summary>
-        /// Aucune documentation sur les métadonnées n'est disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<SERVICE> LeServiceReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SERVICE>("GRHProjectModel.FK_TRAVAILLE_SERVICE", "SERVICE");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SERVICE>("GRHProjectModel.FK_TRAVAILLE_SERVICE", "SERVICE", value);
-                }
-            }
-        }
-
-        #endregion
-
     }
 
     #endregion

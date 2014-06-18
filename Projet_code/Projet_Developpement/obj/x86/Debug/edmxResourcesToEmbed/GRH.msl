@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GRHProjectModelStoreContainer" CdmEntityContainer="GRHProjectEntities1">
+    <EntitySetMapping Name="ABSENCE">
+      <EntityTypeMapping TypeName="GRHProjectModel.ABSENCE">
+        <MappingFragment StoreEntitySet="ABSENCE">
+          <ScalarProperty Name="ABSENCE_ID" ColumnName="ABSENCE_ID" />
+          <ScalarProperty Name="ABSENCE_DATEDEB" ColumnName="ABSENCE_DATEDEB" />
+          <ScalarProperty Name="ABSENCE_DATEFIN" ColumnName="ABSENCE_DATEFIN" />
+          <ScalarProperty Name="ABSENCE_DESCRIPTION" ColumnName="ABSENCE_DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COMPETENCE">
+      <EntityTypeMapping TypeName="GRHProjectModel.COMPETENCE">
+        <MappingFragment StoreEntitySet="COMPETENCE">
+          <ScalarProperty Name="COMP_ID" ColumnName="COMP_ID" />
+          <ScalarProperty Name="COMP_NOM" ColumnName="COMP_NOM" />
+          <ScalarProperty Name="COMP_DETAIL" ColumnName="COMP_DETAIL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CONTRAT">
+      <EntityTypeMapping TypeName="GRHProjectModel.CONTRAT">
+        <MappingFragment StoreEntitySet="CONTRAT">
+          <ScalarProperty Name="CONTRAT_NUM" ColumnName="CONTRAT_NUM" />
+          <ScalarProperty Name="CONTRAT_NOM" ColumnName="CONTRAT_NOM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DIPLOME">
+      <EntityTypeMapping TypeName="GRHProjectModel.DIPLOME">
+        <MappingFragment StoreEntitySet="DIPLOME">
+          <ScalarProperty Name="DIPLOME_ID" ColumnName="DIPLOME_ID" />
+          <ScalarProperty Name="DIPLOME_NOM" ColumnName="DIPLOME_NOM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EMPLOYE">
+      <EntityTypeMapping TypeName="GRHProjectModel.EMPLOYE">
+        <MappingFragment StoreEntitySet="EMPLOYE">
+          <ScalarProperty Name="MET_ID" ColumnName="MET_ID" />
+          <ScalarProperty Name="SERV_ID" ColumnName="SERV_ID" />
+          <ScalarProperty Name="EMP_SEXE" ColumnName="EMP_SEXE" />
+          <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+          <ScalarProperty Name="EMP_NOM" ColumnName="EMP_NOM" />
+          <ScalarProperty Name="EMP_PRENOM" ColumnName="EMP_PRENOM" />
+          <ScalarProperty Name="EMP_ADRESSE" ColumnName="EMP_ADRESSE" />
+          <ScalarProperty Name="EMP_CP" ColumnName="EMP_CP" />
+          <ScalarProperty Name="EMP_VILLE" ColumnName="EMP_VILLE" />
+          <ScalarProperty Name="EMP_TEL" ColumnName="EMP_TEL" />
+          <ScalarProperty Name="EMP_MAIL" ColumnName="EMP_MAIL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EST_GERE_PAR">
+      <EntityTypeMapping TypeName="GRHProjectModel.EST_GERE_PAR">
+        <MappingFragment StoreEntitySet="EST_GERE_PAR">
+          <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+          <ScalarProperty Name="SERVICE_ID" ColumnName="SERVICE_ID" />
+          <ScalarProperty Name="DATE_DEBUTG" ColumnName="DATE_DEBUTG" />
+          <ScalarProperty Name="DATE_FING" ColumnName="DATE_FING" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HISTORIQUE">
+      <EntityTypeMapping TypeName="GRHProjectModel.HISTORIQUE">
+        <MappingFragment StoreEntitySet="HISTORIQUE">
+          <ScalarProperty Name="HISTORIQUE_ID" ColumnName="HISTORIQUE_ID" />
+          <ScalarProperty Name="HISTORIQUE_LIBELLE" ColumnName="HISTORIQUE_LIBELLE" />
+          <ScalarProperty Name="HISTORIQUE_DATE" ColumnName="HISTORIQUE_DATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="METIER">
+      <EntityTypeMapping TypeName="GRHProjectModel.METIER">
+        <MappingFragment StoreEntitySet="METIER">
+          <ScalarProperty Name="METIER_ID" ColumnName="METIER_ID" />
+          <ScalarProperty Name="METIER_NOM" ColumnName="METIER_NOM" />
+          <ScalarProperty Name="METIER_DETAILS" ColumnName="METIER_DETAILS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SERVICE">
+      <EntityTypeMapping TypeName="GRHProjectModel.SERVICE">
+        <MappingFragment StoreEntitySet="SERVICE">
+          <ScalarProperty Name="SERVICE_ID" ColumnName="SERVICE_ID" />
+          <ScalarProperty Name="SERVICE_DESIGNATION" ColumnName="SERVICE_DESIGNATION" />
+          <ScalarProperty Name="SERVICE_TYPE" ColumnName="SERVICE_TYPE" />
+          <ScalarProperty Name="SERVICE_CAPACITE" ColumnName="SERVICE_CAPACITE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SIGNE">
+      <EntityTypeMapping TypeName="GRHProjectModel.SIGNE">
+        <MappingFragment StoreEntitySet="SIGNE">
+          <ScalarProperty Name="CONTRAT_NUM" ColumnName="CONTRAT_NUM" />
+          <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+          <ScalarProperty Name="SALAIRE" ColumnName="SALAIRE" />
+          <ScalarProperty Name="DATE_DEBUTS" ColumnName="DATE_DEBUTS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="GRHProjectModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AVOIR" TypeName="GRHProjectModel.AVOIR" StoreEntitySet="AVOIR">
+      <EndProperty Name="ABSENCE">
+        <ScalarProperty Name="ABSENCE_ID" ColumnName="ABSENCE_ID" />
+      </EndProperty>
+      <EndProperty Name="EMPLOYE">
+        <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="DISPOSE" TypeName="GRHProjectModel.DISPOSE" StoreEntitySet="DISPOSE">
+      <EndProperty Name="COMPETENCE">
+        <ScalarProperty Name="COMP_ID" ColumnName="COMP_ID" />
+      </EndProperty>
+      <EndProperty Name="EMPLOYE">
+        <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="POSSEDE" TypeName="GRHProjectModel.POSSEDE" StoreEntitySet="POSSEDE">
+      <EndProperty Name="DIPLOME">
+        <ScalarProperty Name="DIPLOME_ID" ColumnName="DIPLOME_ID" />
+      </EndProperty>
+      <EndProperty Name="EMPLOYE">
+        <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

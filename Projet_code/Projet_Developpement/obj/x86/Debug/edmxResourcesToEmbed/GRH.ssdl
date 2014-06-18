@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GRHProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityType Name="ABSENCE">
+    <Key>
+      <PropertyRef Name="ABSENCE_ID" />
+    </Key>
+    <Property Name="ABSENCE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ABSENCE_DATEDEB" Type="date" Nullable="false" />
+    <Property Name="ABSENCE_DATEFIN" Type="date" Nullable="false" />
+    <Property Name="ABSENCE_DESCRIPTION" Type="varchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AVOIR">
+    <Key>
+      <PropertyRef Name="ABSENCE_ID" />
+      <PropertyRef Name="EMP_ID" />
+    </Key>
+    <Property Name="ABSENCE_ID" Type="int" Nullable="false" />
+    <Property Name="EMP_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="COMPETENCE">
+    <Key>
+      <PropertyRef Name="COMP_ID" />
+    </Key>
+    <Property Name="COMP_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="COMP_NOM" Type="varchar" MaxLength="50" />
+    <Property Name="COMP_DETAIL" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CONTRAT">
+    <Key>
+      <PropertyRef Name="CONTRAT_NUM" />
+    </Key>
+    <Property Name="CONTRAT_NUM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CONTRAT_NOM" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DIPLOME">
+    <Key>
+      <PropertyRef Name="DIPLOME_ID" />
+    </Key>
+    <Property Name="DIPLOME_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DIPLOME_NOM" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="DISPOSE">
+    <Key>
+      <PropertyRef Name="EMP_ID" />
+      <PropertyRef Name="COMP_ID" />
+    </Key>
+    <Property Name="EMP_ID" Type="int" Nullable="false" />
+    <Property Name="COMP_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EMPLOYE">
+    <Key>
+      <PropertyRef Name="EMP_ID" />
+    </Key>
+    <Property Name="EMP_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EMP_NOM" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EMP_PRENOM" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EMP_ADRESSE" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="EMP_CP" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="EMP_VILLE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EMP_TEL" Type="varchar" MaxLength="10" />
+    <Property Name="EMP_MAIL" Type="varchar" MaxLength="50" />
+    <Property Name="EMP_SEXE" Type="varchar" MaxLength="1" />
+    <Property Name="SERV_ID" Type="int" Nullable="false" />
+    <Property Name="MET_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EST_GERE_PAR">
+    <Key>
+      <PropertyRef Name="EMP_ID" />
+      <PropertyRef Name="SERVICE_ID" />
+    </Key>
+    <Property Name="EMP_ID" Type="int" Nullable="false" />
+    <Property Name="SERVICE_ID" Type="int" Nullable="false" />
+    <Property Name="DATE_DEBUTG" Type="date" />
+    <Property Name="DATE_FING" Type="date" />
+  </EntityType>
+  <EntityType Name="HISTORIQUE">
+    <Key>
+      <PropertyRef Name="HISTORIQUE_ID" />
+    </Key>
+    <Property Name="HISTORIQUE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HISTORIQUE_LIBELLE" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="HISTORIQUE_DATE" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="METIER">
+    <Key>
+      <PropertyRef Name="METIER_ID" />
+    </Key>
+    <Property Name="METIER_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="METIER_NOM" Type="varchar" MaxLength="50" />
+    <Property Name="METIER_DETAILS" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="POSSEDE">
+    <Key>
+      <PropertyRef Name="EMP_ID" />
+      <PropertyRef Name="DIPLOME_ID" />
+    </Key>
+    <Property Name="EMP_ID" Type="int" Nullable="false" />
+    <Property Name="DIPLOME_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SERVICE">
+    <Key>
+      <PropertyRef Name="SERVICE_ID" />
+    </Key>
+    <Property Name="SERVICE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SERVICE_DESIGNATION" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="SERVICE_TYPE" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="SERVICE_CAPACITE" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SIGNE">
+    <Key>
+      <PropertyRef Name="CONTRAT_NUM" />
+      <PropertyRef Name="EMP_ID" />
+    </Key>
+    <Property Name="CONTRAT_NUM" Type="int" Nullable="false" />
+    <Property Name="EMP_ID" Type="int" Nullable="false" />
+    <Property Name="SALAIRE" Type="int" Nullable="false" />
+    <Property Name="DATE_DEBUTS" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_AVOIR_ABSENCE">
+    <End Role="ABSENCE" Type="Self.ABSENCE" Multiplicity="1" />
+    <End Role="AVOIR" Type="Self.AVOIR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ABSENCE">
+        <PropertyRef Name="ABSENCE_ID" />
+      </Principal>
+      <Dependent Role="AVOIR">
+        <PropertyRef Name="ABSENCE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AVOIR_EMPLOYE">
+    <End Role="EMPLOYE" Type="Self.EMPLOYE" Multiplicity="1" />
+    <End Role="AVOIR" Type="Self.AVOIR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYE">
+        <PropertyRef Name="EMP_ID" />
+      </Principal>
+      <Dependent Role="AVOIR">
+        <PropertyRef Name="EMP_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DISPOSE_COMPETENCE">
+    <End Role="COMPETENCE" Type="Self.COMPETENCE" Multiplicity="1" />
+    <End Role="DISPOSE" Type="Self.DISPOSE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMPETENCE">
+        <PropertyRef Name="COMP_ID" />
+      </Principal>
+      <Dependent Role="DISPOSE">
+        <PropertyRef Name="COMP_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DISPOSE_EMPLOYE">
+    <End Role="EMPLOYE" Type="Self.EMPLOYE" Multiplicity="1" />
+    <End Role="DISPOSE" Type="Self.DISPOSE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYE">
+        <PropertyRef Name="EMP_ID" />
+      </Principal>
+      <Dependent Role="DISPOSE">
+        <PropertyRef Name="EMP_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EMPLOYE_METIER">
+    <End Role="METIER" Type="Self.METIER" Multiplicity="1" />
+    <End Role="EMPLOYE" Type="Self.EMPLOYE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="METIER">
+        <PropertyRef Name="METIER_ID" />
+      </Principal>
+      <Dependent Role="EMPLOYE">
+        <PropertyRef Name="MET_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EMPLOYE_SERVICE">
+    <End Role="SERVICE" Type="Self.SERVICE" Multiplicity="1" />
+    <End Role="EMPLOYE" Type="Self.EMPLOYE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SERVICE">
+        <PropertyRef Name="SERVICE_ID" />
+      </Principal>
+      <Dependent Role="EMPLOYE">
+        <PropertyRef Name="SERV_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EST_GERE_PAR_EMPLOYE">
+    <End Role="EMPLOYE" Type="Self.EMPLOYE" Multiplicity="1" />
+    <End Role="EST_GERE_PAR" Type="Self.EST_GERE_PAR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYE">
+        <PropertyRef Name="EMP_ID" />
+      </Principal>
+      <Dependent Role="EST_GERE_PAR">
+        <PropertyRef Name="EMP_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EST_GERE_PAR_SERVICE">
+    <End Role="SERVICE" Type="Self.SERVICE" Multiplicity="1" />
+    <End Role="EST_GERE_PAR" Type="Self.EST_GERE_PAR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SERVICE">
+        <PropertyRef Name="SERVICE_ID" />
+      </Principal>
+      <Dependent Role="EST_GERE_PAR">
+        <PropertyRef Name="SERVICE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_POSSEDE_DIPLOME">
+    <End Role="DIPLOME" Type="Self.DIPLOME" Multiplicity="1" />
+    <End Role="POSSEDE" Type="Self.POSSEDE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DIPLOME">
+        <PropertyRef Name="DIPLOME_ID" />
+      </Principal>
+      <Dependent Role="POSSEDE">
+        <PropertyRef Name="DIPLOME_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_POSSEDE_EMPLOYE">
+    <End Role="EMPLOYE" Type="Self.EMPLOYE" Multiplicity="1" />
+    <End Role="POSSEDE" Type="Self.POSSEDE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYE">
+        <PropertyRef Name="EMP_ID" />
+      </Principal>
+      <Dependent Role="POSSEDE">
+        <PropertyRef Name="EMP_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SIGNE_CONTRAT">
+    <End Role="CONTRAT" Type="Self.CONTRAT" Multiplicity="1" />
+    <End Role="SIGNE" Type="Self.SIGNE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONTRAT">
+        <PropertyRef Name="CONTRAT_NUM" />
+      </Principal>
+      <Dependent Role="SIGNE">
+        <PropertyRef Name="CONTRAT_NUM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SIGNE_EMPLOYE">
+    <End Role="EMPLOYE" Type="Self.EMPLOYE" Multiplicity="1" />
+    <End Role="SIGNE" Type="Self.SIGNE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYE">
+        <PropertyRef Name="EMP_ID" />
+      </Principal>
+      <Dependent Role="SIGNE">
+        <PropertyRef Name="EMP_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GRHProjectModelStoreContainer">
+    <EntitySet Name="ABSENCE" EntityType="Self.ABSENCE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AVOIR" EntityType="Self.AVOIR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="COMPETENCE" EntityType="Self.COMPETENCE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CONTRAT" EntityType="Self.CONTRAT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DIPLOME" EntityType="Self.DIPLOME" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DISPOSE" EntityType="Self.DISPOSE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EMPLOYE" EntityType="Self.EMPLOYE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EST_GERE_PAR" EntityType="Self.EST_GERE_PAR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HISTORIQUE" EntityType="Self.HISTORIQUE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="METIER" EntityType="Self.METIER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="POSSEDE" EntityType="Self.POSSEDE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SERVICE" EntityType="Self.SERVICE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SIGNE" EntityType="Self.SIGNE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_AVOIR_ABSENCE" Association="Self.FK_AVOIR_ABSENCE">
+      <End Role="ABSENCE" EntitySet="ABSENCE" />
+      <End Role="AVOIR" EntitySet="AVOIR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AVOIR_EMPLOYE" Association="Self.FK_AVOIR_EMPLOYE">
+      <End Role="EMPLOYE" EntitySet="EMPLOYE" />
+      <End Role="AVOIR" EntitySet="AVOIR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DISPOSE_COMPETENCE" Association="Self.FK_DISPOSE_COMPETENCE">
+      <End Role="COMPETENCE" EntitySet="COMPETENCE" />
+      <End Role="DISPOSE" EntitySet="DISPOSE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DISPOSE_EMPLOYE" Association="Self.FK_DISPOSE_EMPLOYE">
+      <End Role="EMPLOYE" EntitySet="EMPLOYE" />
+      <End Role="DISPOSE" EntitySet="DISPOSE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EMPLOYE_METIER" Association="Self.FK_EMPLOYE_METIER">
+      <End Role="METIER" EntitySet="METIER" />
+      <End Role="EMPLOYE" EntitySet="EMPLOYE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EMPLOYE_SERVICE" Association="Self.FK_EMPLOYE_SERVICE">
+      <End Role="SERVICE" EntitySet="SERVICE" />
+      <End Role="EMPLOYE" EntitySet="EMPLOYE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EST_GERE_PAR_EMPLOYE" Association="Self.FK_EST_GERE_PAR_EMPLOYE">
+      <End Role="EMPLOYE" EntitySet="EMPLOYE" />
+      <End Role="EST_GERE_PAR" EntitySet="EST_GERE_PAR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EST_GERE_PAR_SERVICE" Association="Self.FK_EST_GERE_PAR_SERVICE">
+      <End Role="SERVICE" EntitySet="SERVICE" />
+      <End Role="EST_GERE_PAR" EntitySet="EST_GERE_PAR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_POSSEDE_DIPLOME" Association="Self.FK_POSSEDE_DIPLOME">
+      <End Role="DIPLOME" EntitySet="DIPLOME" />
+      <End Role="POSSEDE" EntitySet="POSSEDE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_POSSEDE_EMPLOYE" Association="Self.FK_POSSEDE_EMPLOYE">
+      <End Role="EMPLOYE" EntitySet="EMPLOYE" />
+      <End Role="POSSEDE" EntitySet="POSSEDE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SIGNE_CONTRAT" Association="Self.FK_SIGNE_CONTRAT">
+      <End Role="CONTRAT" EntitySet="CONTRAT" />
+      <End Role="SIGNE" EntitySet="SIGNE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SIGNE_EMPLOYE" Association="Self.FK_SIGNE_EMPLOYE">
+      <End Role="EMPLOYE" EntitySet="EMPLOYE" />
+      <End Role="SIGNE" EntitySet="SIGNE" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

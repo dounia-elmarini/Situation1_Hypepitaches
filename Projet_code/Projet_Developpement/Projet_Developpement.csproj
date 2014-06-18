@@ -118,6 +118,18 @@
     <Compile Include="list_ajoutserv.Designer.cs">
       <DependentUpon>list_ajoutserv.cs</DependentUpon>
     </Compile>
+    <Compile Include="list_empCompetences.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="list_empCompetences.Designer.cs">
+      <DependentUpon>list_empCompetences.cs</DependentUpon>
+    </Compile>
+    <Compile Include="list_empService.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="list_empService.Designer.cs">
+      <DependentUpon>list_empService.cs</DependentUpon>
+    </Compile>
     <Compile Include="list_historique.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +174,12 @@
     <EmbeddedResource Include="list_ajoutserv.resx">
       <DependentUpon>list_ajoutserv.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="list_empCompetences.resx">
+      <DependentUpon>list_empCompetences.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="list_empService.resx">
+      <DependentUpon>list_empService.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="list_historique.resx">
       <DependentUpon>list_historique.cs</DependentUpon>
     </EmbeddedResource>
@@ -187,13 +205,13 @@
     <None Include="Properties\DataSources\CONTRAT.datasource" />
     <None Include="Properties\DataSources\DIPLOME.datasource" />
     <None Include="Properties\DataSources\EMPLOYE.datasource" />
+    <None Include="Properties\DataSources\EST_GERE_PAR.datasource" />
     <None Include="Properties\DataSources\GRHProjectEntities.datasource" />
     <None Include="Properties\DataSources\GRHProjectEntities1.datasource" />
     <None Include="Properties\DataSources\HISTORIQUE.datasource" />
     <None Include="Properties\DataSources\METIER.datasource" />
     <None Include="Properties\DataSources\SERVICE.datasource" />
     <None Include="Properties\DataSources\SIGNE.datasource" />
-    <None Include="Properties\DataSources\TRAVAILLE.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
